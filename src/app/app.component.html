@@ -1,0 +1,21 @@
+
+<div class="container">
+  <div class="header">
+    <ul class="nav nav-pills pull-right">
+      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact : true}">Home</a></li>
+      <li><a routerLink="/signup" routerLinkActive="active">Sign up</a></li>
+      <li><a routerLink="/signin" routerLinkActive="active">Sign In</a></li>
+    </ul>
+    <h3 class="text-muted">{{title}} - CSE</h3>
+  </div>
+
+  <router-outlet></router-outlet>
+
+
+
+  <div class="footer">
+    <p>&copy; CSE</p>
+  </div>
+
+</div> <!-- /container -->
+

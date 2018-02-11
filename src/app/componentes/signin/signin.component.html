@@ -1,0 +1,15 @@
+<h2 class="page-header">Sign In to Your Account</h2>
+
+<form [formGroup]="signinForm" method="post" action="" (ngSubmit)="signup(signupForm.value)">
+
+  <div class="form-group" >
+    <label for="username"> Username </label>
+    <input type="text" class="form-control" placeholder="Enter Username" id="username" name="username" formControlName="username">
+  </div>
+  <div class="form-group">
+    <label for="password"> Password </label>
+    <input type="password" class="form-control" placeholder="Enter Password" id="password" name="password" formControlName="password">
+  </div>
+  <button type="button" class="btn btn-default">Submit</button>
+
+</form>

@@ -1,0 +1,34 @@
+<h2 class="page-header">Sign Up to CSE Q&A Forum</h2>
+
+<form [formGroup]="signupForm" method="post" action="" (ngSubmit)="signup(signupForm.value)">
+  <div class="form-group">
+    <label for="firstname">First Name</label>
+    <input type="text" class="form-control" placeholder="Firstname" id="firstname" name="username" formControlName="firstname">
+  </div>
+  <div class="form-group">
+    <label for="lastname">Last Name</label>
+    <input type="text" class="form-control" placeholder="Lastname" id="lastname" name="lastname" formControlName="lastname">
+  </div>
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" class="form-control" placeholder="Username" id="username" name="username" formControlName="username">
+  </div>
+  <div class="form-group">
+    <label for="usertype">User Type</label>
+    <input type="text" class="form-control" placeholder="Usertype" id="usertype" name="usertype" formControlName="usertype">
+  </div>
+  <div class="form-group">
+    <label for="email">E-mail</label>
+    <input type="text" class="form-control" placeholder="Email" id="email" name="email" formControlName="email">
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" placeholder="Password" id="password" name="password" formControlName="password">
+  </div>
+  <div class="form-group">
+    <label for="confirmpassword">Confirm Password</label>
+    <input type="password" class="form-control" placeholder="Password Confirmation" id="confirmpassword" formControlName="confirmpassword">
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+
+</form>
