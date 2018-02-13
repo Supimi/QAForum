@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-//import { sign}
+import { SigninService} from '../../../services/signin.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -7,11 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+  authToken: string;
+  p:string;
 
-
-  constructor() {}
+  constructor(private _signinservice: SigninService,  private _router: Router) {
+   this.authToken=window.localStorage.getItem('auth-token');
+   this.p= 'supimi';
+   console.log(this.authToken);
+  }
 
   ngOnInit() {
   }
-
+  
 }

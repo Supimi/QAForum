@@ -9,13 +9,38 @@ import 'rxjs/add/observable/throw';
 export class SigninService {
   authToken: string;
   login_success: boolean;
+  _id: string;
 
-  constructor(private _http: Http) { }
+  constructor(private _http: Http) { 
+  }
+
+
   signin(username , password ) {
+    console.log( console.log('from sign in'));
     const headers = new Headers();
     headers.append('Content-Type', 'application/X-www-form=urlencoded' );
-    return this._http.post('/http://localhost:3000/api/login', {
-      'username': username , 'password' : password
-    }).map( res => res.json());
+    return this._http.post('http://localhost:3000/api/login', { 'username': username ,'password' : password }).map(res=>res.json());
+  }s
+    
+  getobjectId() {
+    return this._http.post('http://localhost:3000/api/me',{'token':this.authToken}).map(res => res.json());
+  }
+
+
+  setAuthToken(token){
+      this.authToken = token;
+      this.login_success = true;
+  }
+
+  getUser(){
+    return this._http.post('http://localhost:3000/api/userdetails', {'id': this._id }).map(res=>res.json());
+  }
+
+  getauthToken(){
+    return this.authToken;
+  }
+
+  getId(){
+    return this._id;
   }
 }

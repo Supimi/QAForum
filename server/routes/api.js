@@ -7,8 +7,11 @@ var jsonwebtoken = require('jsonwebtoken');
 function createToken(user) {
   var token = jsonwebtoken.sign({
       id: user._id,
-      name: user.name,
-      username: user.username
+      firstname: user.firstname,
+      lastname: user.lastname,
+      username: user.username,
+      usertype: user.usertype,
+      email: user.email
     }, secretKey);
   return token;
 }
@@ -18,7 +21,7 @@ module.exports = function (app,express) {
 
   api.post('/signup', function (req,res) {
     var user = new User({
-      fistname:req.body.firstname,
+      firstname:req.body.firstname,
       lastname:req.body.lastname,
       username: req.body.username,
       usertype: req.body.usertype,
@@ -55,6 +58,7 @@ module.exports = function (app,express) {
 
 
   api.post('/login',function (req,res) {
+    console.log(req.body.username);
     User.findOne({
       username: req.body.username
     }).select('password').exec(function (err, user) {
@@ -86,6 +90,27 @@ module.exports = function (app,express) {
       }
     });
 
+  });
+
+
+  api.post('/userdetails',function (req,res) {
+    User.findOne({
+      _id: req.body.id
+    }).exec(function (err, userdetails) {
+      if(err) {
+        console.log('cannot get user details');
+        throw err;
+      }
+
+      if(!userdetails){
+        res.send({
+          success: false,
+          message: "User doesn't exist."
+        });
+      }else if(userdetails){
+        res.json(userdetails);
+      }
+    });
   });
 
 
@@ -138,7 +163,7 @@ module.exports = function (app,express) {
       });
     });
 
-  api.get('/me',function (req,res) {
+  api.post('/me',function (req,res) {
       res.json(req.decoded)
 
   });
