@@ -1,10 +1,22 @@
+<div class="container">
+  <div class="header">
+    <img src="../../assets/img/logo.png" alt="">
+
+    <ul class="nav nav-pills pull-right">
+      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact : true}">Home</a></li>
+      <li><a routerLink="/signup" routerLinkActive="active">Sign up</a></li>
+      <li><a routerLink="/signin" routerLinkActive="active">Sign In</a></li>
+    </ul>
+   
+  </div>
+
 <h2 class="page-header">Sign In to Your Account</h2>
 
 <form [formGroup]="signinForm" method="post" action="" (ngSubmit)="signin(signinForm.value)">
 
   <div class="form-group" >
-    <label for="username"> Username </label>
-    <input type="text" class="form-control" placeholder="Enter Username" id="username" name="username" formControlName="username">
+    <label for="email"> Email </label>
+    <input type="text" class="form-control" placeholder="Enter Username" id="email" name="email" formControlName="email">
   </div>
   <div class="form-group">
     <label for="password"> Password </label>
@@ -14,3 +26,9 @@
 </form>
 
 <span> {{message}}</span>
+
+<div class="footer">
+  <p>&copy; CSE</p>
+</div>
+
+</div> <!-- /container -->

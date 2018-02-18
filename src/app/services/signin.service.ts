@@ -10,30 +10,33 @@ export class SigninService {
   authToken: string;
   login_success: boolean;
   _id: string;
+  email: string;
 
   constructor(private _http: Http) { 
   }
 
 
-  signin(username , password ) {
+  signin(email , password ) {
     console.log( console.log('from sign in'));
     const headers = new Headers();
     headers.append('Content-Type', 'application/X-www-form=urlencoded' );
-    return this._http.post('http://localhost:3000/api/login', { 'username': username ,'password' : password }).map(res=>res.json());
-  }s
-    
-  getobjectId() {
-    return this._http.post('http://localhost:3000/api/me',{'token':this.authToken}).map(res => res.json());
+    return this._http.post('http://localhost:3000/api/login', { 'email': email ,'password' : password }).map(res=>res.json());
   }
-
-
+   
   setAuthToken(token){
       this.authToken = token;
       this.login_success = true;
   }
+  setId(id){
+    this._id=id;
+  }
 
-  getUser(){
-    return this._http.post('http://localhost:3000/api/userdetails', {'id': this._id }).map(res=>res.json());
+  setEmail(email){
+    this.email = email;
+  }
+
+  getUser(email){
+    return this._http.post('http://localhost:3000/api/userdetails', {'email': email }).map(res=>res.json());
   }
 
   getauthToken(){
@@ -42,5 +45,9 @@ export class SigninService {
 
   getId(){
     return this._id;
+  }
+
+  getEmail(){
+    return this.email;
   }
 }

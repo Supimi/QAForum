@@ -1,5 +1,6 @@
 var User =require('../models/user');
 var Story = require('../models/story');
+var Question = require('../models/question');
 var config = require('../../config');
 var secretKey = config.secretKey;
 var jsonwebtoken = require('jsonwebtoken');
@@ -58,9 +59,8 @@ module.exports = function (app,express) {
 
 
   api.post('/login',function (req,res) {
-    console.log(req.body.username);
     User.findOne({
-      username: req.body.username
+      email: req.body.email
     }).select('password').exec(function (err, user) {
       if(err) throw err;
 
@@ -95,7 +95,7 @@ module.exports = function (app,express) {
 
   api.post('/userdetails',function (req,res) {
     User.findOne({
-      _id: req.body.id
+      email: req.body.email
     }).exec(function (err, userdetails) {
       if(err) {
         console.log('cannot get user details');
@@ -113,12 +113,15 @@ module.exports = function (app,express) {
     });
   });
 
+  
+
+
 
 //middlewere
   api.use(function (req, res, next) {
     console.log('Somebody just came to app!');
 
-    var token = req.body.token || req.param('token') || req.headers['x-access-token'];
+    var token = req.body.token || req.headers['x-access-token'];
 
     //check if token exist
     if(token) {
@@ -169,7 +172,82 @@ module.exports = function (app,express) {
   });
 
 
+  api.post('/addquestion',function (req,res) {
+    var question = new Question({
+      question_content:req.body.question_content,
+      tags:req.body.tags,
+      type: req.body.type,
+      user_posted:req.body.id,
+      date_posted:new Date()
+    });
+
+    question.save(function (err){
+      if(err){
+        res.send(err);
+        return;
+      }else{
+        res.json({
+          success:true,
+          message: 'Successfully posted',
+        });
+      }
+    });
+
+  });
+
+  
+  api.post('/questions',function (req,res) {
+    Question.find({ }).exec(function (err, questions) {
+      if(err) {
+        console.log('questions cant be fetched');
+        res.send({
+          success: false,
+          message: "error when accessing the questions"
+        });
+      }
+
+      if(!questions){
+        res.send({
+          success: false,
+          message: "questions does not exists."
+        });
+      }else if(questions){
+        res.json(questions);
+      }
+    });
+  });
+
+  api.post('/findquestion',function (req,res) {
+    Question.findOne({
+      type: req.body.type
+    }).exec(function (err, result) {
+      if(err) {
+        console.log('error in accesing DB');
+        res.send({
+          success: false,
+          message: "error"
+        });
+      }
+
+      if(!results){
+        res.send({
+          success: false,
+          message: "Question doesn't exist."
+        });
+      }else if(results){
+        res.json(results);
+      }
+    });
+  });
+
+
+
+ 
+
+
+
+  
 
 
   return api;
-}
+  }

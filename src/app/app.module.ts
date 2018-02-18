@@ -13,7 +13,12 @@ import { SignupService} from './services/signup.service';
 import { SigninService} from './services/signin.service';
 import { ProfileComponent } from './componentes/user/profile/profile.component';
 import { UserComponent } from './componentes/user/user.component';
-
+import { SignupnavComponent } from './componentes/signup/signupnav/signupnav.component';
+import { SignupStudentComponent } from './componentes/signup/signup-student/signup-student.component';
+import { SignupOtherComponent } from './componentes/signup/signup-other/signup-other.component';
+import { NavbarComponent } from './componentes/home/navbar/navbar.component';
+import { AddquestionComponent } from './componentes/user/addquestion/addquestion.component';
+import { AddquestionService } from './services/addquestion.service';
 
 const appRoutes: Routes = [
   {
@@ -43,13 +48,18 @@ const appRoutes: Routes = [
     HomeComponent,
     AdminComponent,
     ProfileComponent,
-    UserComponent
+    UserComponent,
+    SignupnavComponent,
+    SignupStudentComponent,
+    SignupOtherComponent,
+    NavbarComponent,
+    AddquestionComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
     BrowserModule, HttpModule, FormsModule, ReactiveFormsModule
   ],
-  providers: [DataService, SignupService, SigninService ],
+  providers: [DataService, SignupService, SigninService, AddquestionService ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

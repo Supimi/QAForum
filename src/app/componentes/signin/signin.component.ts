@@ -10,16 +10,16 @@ import { Router } from '@angular/router';
 })
 export class SigninComponent implements OnInit {
   signinForm: FormGroup ;
-  username: string = '';
+  email: string = '';
   password: string = '';
   message: string = '';
 
 
   constructor(private _signinservice: SigninService,  private _formBuilder: FormBuilder,  private _router: Router ) {
-    this.username = '' ;
+    this.email = '' ;
     this.password = '' ;
     this.signinForm = _formBuilder .group({
-      'username' : [null, Validators.required],
+      'email' : [null, Validators.required],
       'password' : [null, Validators.required]
     });
   }
@@ -27,25 +27,26 @@ export class SigninComponent implements OnInit {
   ngOnInit() {
   }
   signin(post){
-    this.username = post.username;
+    this.email = post.email;
     this.password = post.password;
     console.log('from user sign in');
-    this._signinservice.signin( this.username, this.password ).subscribe(
+    this._signinservice.signin( this.email, this.password ).subscribe(
       res => {
         console.log(res);
         if(res.success){
           this._signinservice.setAuthToken(res.token);
+          this._signinservice.setEmail(post.email);
           this.message= 'Login Successful' ;
-          console.log(this.message);
           window.localStorage.setItem('auth-token',this._signinservice.getauthToken());
+          window.localStorage.setItem('auth-token2',this._signinservice.getEmail());
           if(this._signinservice.authToken != ''){
             this._router.navigate(['/user/profile']);
           }
         }
         else{
           this.message= 'Invalied Username or password' ;
-          console.log(this.message);
         }
+        console.log(this.message);
       },
       error=>{
 

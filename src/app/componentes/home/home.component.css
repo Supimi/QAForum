@@ -33,9 +33,9 @@ body {
 }
 
 /* Customize container */
-@media (min-width: 768px) {
+@media (min-width: 1000px) {
   .container {
-    max-width: 730px;
+    max-width: 1000px;
   }
 }
 .container-narrow > hr {
@@ -72,8 +72,42 @@ body {
   /* Remove the bottom border on the jumbotron for visual effect */
   .jumbotron {
     border-bottom: 0;
-    background-color: #a5d4e6;
+    background-color: grey;
     color: black;
   }
 }
+a.active{
+  color: red;
+}
 
+@media (min-width: 1000px) {
+  .img-header{
+    height: auto;
+    width: auto;
+    position: relative;
+    text-align: center;
+    color: white;
+    font-size: 100%;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+    
+  }
+}
+
+/* resize image */
+.img-header img {
+  width: 100%;
+  height: auto;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.navbar-brand>img {
+  height: 100%;
+  padding: 15px;
+  width: auto;
+}

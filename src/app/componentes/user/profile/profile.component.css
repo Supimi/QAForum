@@ -1,0 +1,36 @@
+.navbar-login {
+  width: 305px;
+  padding: 10px;
+  padding-bottom: 0px;
+}
+
+.navbar-login-session {
+  padding: 10px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+}
+
+.icon-size {
+  font-size: 87px;
+}
+
+.navbar {
+  background-color: #ddbdbd
+}
+
+.navbar-addquestion{
+  padding-top: 5px;
+
+}
+
+.navbar-addquestion a{
+    background-color: #6c98a4;
+    padding: 10px 5px 10px 5px;
+}
+
+.navbar-header img{
+    vertical-align: middle;
+    height: 100%;
+    padding: 15px;
+    width: auto;
+}

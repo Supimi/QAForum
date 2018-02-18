@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {SignupService} from '../../services/signup.service';
+import {SigninService} from '../../services/signin.service';
 import { FormBuilder, FormGroup , FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -18,7 +19,7 @@ export class SignupComponent implements OnInit {
   password: string;
   confirmpassword: string;
 
-  constructor(private _signupService: SignupService, private _formBuilder: FormBuilder,  private _router: Router ) {
+  constructor(private _signupService: SignupService, private _signinService: SigninService ,private _formBuilder: FormBuilder,  private _router: Router ) {
     this.firstname = '';
     this.lastname = '';
     this.username = '' ;
@@ -41,10 +42,18 @@ export class SignupComponent implements OnInit {
   ngOnInit() {
   }
   signup(post) {
-    this._signupService.signup( post.firstname , post.lastname , post.username, post.email , post.email, post.password).subscribe(
+    this._signupService.signup( post.firstname , post.lastname , post.username, post.usertype,post.email, post.password).subscribe(
       res => {
         console.log(res);
+        this._signinService.setAuthToken(res.token);
+        this._signinService.setEmail(post.email);
+        window.localStorage.setItem('auth-token',this._signinService.getauthToken());
+        window.localStorage.setItem('auth-token2',this._signinService.getEmail());
         if (res.success) {this._router.navigate(['/user/profile']); }
-      });
+      },
+      error=>{
+        console.log("signup is failed.");
+      }
+    );
   }
 }

@@ -1,3 +1,15 @@
+<div class="container">
+  <div class="header">
+    <img src="../../assets/img/logo.png" alt="">
+
+    <ul class="nav nav-pills pull-right">
+      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact : true}">Home</a></li>
+      <li><a routerLink="/signup" routerLinkActive="active">Sign up</a></li>
+      <li><a routerLink="/signin" routerLinkActive="active">Sign In</a></li>
+    </ul>
+   
+  </div>
+
 <h2 class="page-header">Sign Up to CSE Q&A Forum</h2>
 
 <form [formGroup]="signupForm" method="post" action="" (ngSubmit)="signup(signupForm.value)">
@@ -32,3 +44,9 @@
   <button type="submit" class="btn btn-default">Submit</button>
 
 </form>
+<div class="footer">
+  <p>&copy; CSE</p>
+</div>
+
+</div> <!-- /container -->
+
