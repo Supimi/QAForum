@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SigninService} from '../../../services/signin.service';
+import { UserService} from '../../../services/user.service';
 import { AddquestionComponent } from './../addquestion/addquestion.component';
 import { Router } from '@angular/router';
 
@@ -17,20 +17,26 @@ export class ProfileComponent implements OnInit {
   usertype: string; 
   _id: string;
 
-  constructor(private _signinservice: SigninService,  private _router: Router) {
-  this.authToken=this._signinservice.getauthToken() || localStorage.getItem('auth-token');
-  this.email = this._signinservice.getEmail()|| localStorage.getItem('auth-token');
+  constructor(private _userService: UserService,  private _router: Router) {
 
+    // Retrieve the object from localStorage
+    var userObject = localStorage.getItem('userObject');
+
+    // console.log retrieved item
+    var user= JSON.parse(userObject);
+
+    this.authToken=user.token;
+    this.email = user.email;
    
-    this._signinservice.getUser(this.email).subscribe(res=>{
-        this.email=res.email;
+    this._userService.getUser(this.email).subscribe(res=>{
         this.username= res.username;
         this.firstname= res.firstname;
         this.lastname= res.lastname;
         this.usertype= res.usertype;
         this._id= res._id;
         console.log(res.username);
-        this._signinservice.setId(this._id);
+        this._userService.setUsername(this.username);
+        this._userService.setEmail(this.email);
     },
     error=>{
       console.log("Something went wrong");
@@ -40,6 +46,14 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  logout(){
+    console.log('sign out called');
+    window.localStorage.removeItem('userObject');
+    console.log(localStorage.getItem('userObject'));
+    
+    this._router.navigate(['/']);
   }
 
   

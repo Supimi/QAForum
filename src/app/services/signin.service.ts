@@ -7,10 +7,7 @@ import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class SigninService {
-  authToken: string;
-  login_success: boolean;
-  _id: string;
-  email: string;
+
 
   constructor(private _http: Http) { 
   }
@@ -22,32 +19,5 @@ export class SigninService {
     headers.append('Content-Type', 'application/X-www-form=urlencoded' );
     return this._http.post('http://localhost:3000/api/login', { 'email': email ,'password' : password }).map(res=>res.json());
   }
-   
-  setAuthToken(token){
-      this.authToken = token;
-      this.login_success = true;
-  }
-  setId(id){
-    this._id=id;
-  }
-
-  setEmail(email){
-    this.email = email;
-  }
-
-  getUser(email){
-    return this._http.post('http://localhost:3000/api/userdetails', {'email': email }).map(res=>res.json());
-  }
-
-  getauthToken(){
-    return this.authToken;
-  }
-
-  getId(){
-    return this._id;
-  }
-
-  getEmail(){
-    return this.email;
-  }
+  
 }

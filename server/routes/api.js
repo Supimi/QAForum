@@ -101,7 +101,6 @@ module.exports = function (app,express) {
         console.log('cannot get user details');
         throw err;
       }
-
       if(!userdetails){
         res.send({
           success: false,
@@ -177,7 +176,7 @@ module.exports = function (app,express) {
       question_content:req.body.question_content,
       tags:req.body.tags,
       type: req.body.type,
-      user_posted:req.body.id,
+      user_posted:req.body.user_posted,
       date_posted:new Date()
     });
 
@@ -242,8 +241,25 @@ module.exports = function (app,express) {
 
 
 
- 
-
+  api.post('/getusername',function (req,res) {
+    User.findOne({
+      _id: require('mongodb').ObjectId(req.body.id)
+    }).select('username').exec(function (err, username) {
+      if(err) {
+        console.log('cannot get username');
+        throw err;
+      }
+      if(!username){
+        res.send({
+          success: false,
+          message: "User doesn't exist."
+        });
+      }else if(username){
+        res.json(username);
+      }
+    });
+  });
+    
 
 
   

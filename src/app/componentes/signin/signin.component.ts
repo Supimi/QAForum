@@ -34,18 +34,18 @@ export class SigninComponent implements OnInit {
       res => {
         console.log(res);
         if(res.success){
-          this._signinservice.setAuthToken(res.token);
-          this._signinservice.setEmail(post.email);
           this.message= 'Login Successful' ;
-          window.localStorage.setItem('auth-token',this._signinservice.getauthToken());
-          window.localStorage.setItem('auth-token2',this._signinservice.getEmail());
-          if(this._signinservice.authToken != ''){
-            this._router.navigate(['/user/profile']);
+          var userObject = { 'token': res.token, 'email': post.email };
+
+          // Set localStorage item
+          localStorage.setItem('userObject', JSON.stringify(userObject));
+          //route to profile
+          this._router.navigate(['/user/profile']);
+          
           }
-        }
-        else{
+          else{
           this.message= 'Invalied Username or password' ;
-        }
+          }
         console.log(this.message);
       },
       error=>{

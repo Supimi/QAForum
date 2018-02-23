@@ -42,13 +42,14 @@ export class SignupComponent implements OnInit {
   ngOnInit() {
   }
   signup(post) {
-    this._signupService.signup( post.firstname , post.lastname , post.username, post.usertype,post.email, post.password).subscribe(
+    this._signupService.signup( post.firstname , post.lastname , post.username, post.usertype, post.email, post.password).subscribe(
       res => {
         console.log(res);
-        this._signinService.setAuthToken(res.token);
-        this._signinService.setEmail(post.email);
-        window.localStorage.setItem('auth-token',this._signinService.getauthToken());
-        window.localStorage.setItem('auth-token2',this._signinService.getEmail());
+        var userObject = { 'token': res.token, 'email': post.email };
+
+        // Set localStorage item
+        localStorage.setItem('userObject', JSON.stringify(userObject));
+
         if (res.success) {this._router.navigate(['/user/profile']); }
       },
       error=>{

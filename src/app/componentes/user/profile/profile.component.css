@@ -1,3 +1,13 @@
+.body {
+  padding-top: 54px;
+}
+
+@media (min-width: 992px) {
+  .body {
+    padding-top: 56px;
+  }
+}
+
 .navbar-login {
   width: 305px;
   padding: 10px;
@@ -15,7 +25,7 @@
 }
 
 .navbar {
-  background-color: #ddbdbd
+  background-color: #ddbdbd;
 }
 
 .navbar-addquestion{
@@ -33,4 +43,15 @@
     height: 100%;
     padding: 15px;
     width: auto;
+}
+
+.container2{
+  margin-top: 100px;
+}
+
+
+.containter-fluid scrollable{
+  padding-top:100px;
+  height: 100%;
+  overflow: auto;
 }

@@ -18,7 +18,9 @@ import { SignupStudentComponent } from './componentes/signup/signup-student/sign
 import { SignupOtherComponent } from './componentes/signup/signup-other/signup-other.component';
 import { NavbarComponent } from './componentes/home/navbar/navbar.component';
 import { AddquestionComponent } from './componentes/user/addquestion/addquestion.component';
-import { AddquestionService } from './services/addquestion.service';
+import { QuestionService } from './services/question.service';
+import { PostlistComponent } from './componentes/user/postlist/postlist.component';
+import { UserService } from './services/user.service';
 
 const appRoutes: Routes = [
   {
@@ -53,13 +55,14 @@ const appRoutes: Routes = [
     SignupStudentComponent,
     SignupOtherComponent,
     NavbarComponent,
-    AddquestionComponent
+    AddquestionComponent,
+    PostlistComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
     BrowserModule, HttpModule, FormsModule, ReactiveFormsModule
   ],
-  providers: [DataService, SignupService, SigninService, AddquestionService ],
+  providers: [DataService, SignupService, SigninService, QuestionService,UserService ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
