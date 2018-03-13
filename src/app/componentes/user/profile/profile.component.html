@@ -1,77 +1,74 @@
-<div class="body">
-        <nav class="navbar navbar-default navbar-fixed-top " role="navigation">
-                <div class="container">
-                    <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span> 
-                            </button>
-                            <a target="_blank" href="" class="navbar-brand">QSolver</a>
-                    </div>
-                    
-                    <div class="collapse navbar-collapse">
-                        <ul class="nav navbar-nav">
-                            <li class="active"><a href="#">Home</a></li>
-                            <li><a href="#" target="_blank">History</a></li>
-                         </ul>
+<nav class="navbar navbar-default navbar-fixed-top " role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a target="_blank" href="" class="navbar-brand">QSolver</a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li id="home">
+                    <a href="user/postlist">
+                        <strong>Home</strong>
+                    </a>
+                </li>
+                <li id="history">
+                    <a href="" target="_blank">
+                        <strong>History</strong>
+                    </a>
+                </li>
+            </ul>
             
-                         <div class="col-sm-3 col-md-3">
-                            <form class="navbar-form" role="search">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search" name="q">
-                                <div class="input-group-btn">
-                                    <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown" id="username">
+                        <span class="glyphicon glyphicon-user"></span>
+                        <strong>{{username}}</strong>
+                        <span class="glyphicon glyphicon-chevron-down"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <div class="navbar-login">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <p class="text-center">
+                                            <span class="glyphicon glyphicon-user icon-size"></span>
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <p class="text-left">
+                                            <strong>{{username}}</strong>
+                                        </p>
+                                        <p class="text-left small">{{email}}</p>
+                                        <p class="text-left">
+                                            <a href="#" class="btn btn-primary btn-block btn-sm">Profile</a>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                            </form>
-                        </div>
-            
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <span class="glyphicon glyphicon-user"></span>
-                                    <strong>{{username}}</strong>
-                                    <span class="glyphicon glyphicon-chevron-down"></span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <div class="navbar-login">
-                                            <div class="row">
-                                                <div class="col-lg-4">
-                                                    <p class="text-center">
-                                                        <span class="glyphicon glyphicon-user icon-size"></span>
-                                                    </p>
-                                                </div>
-                                                <div class="col-lg-8">
-                                                    <p class="text-left"><strong>{{username}}</strong></p>
-                                                    <p class="text-left small">{{email}}</p>
-                                                    <p class="text-left">
-                                                        <a href="#" class="btn btn-primary btn-block btn-sm">Profile</a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="divider navbar-login-session-bg"></li>
-                                     <li><a href="#">Edit Profile <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
+                        </li>
+                        <li class="divider navbar-login-session-bg"></li>
+                        <li>
+                            <a href="#">Edit Profile
+                                <span class="glyphicon glyphicon-cog pull-right"></span>
+                            </a>
+                        </li>
                         <li class="divider"></li>
-                        <li><a href="#" onclick="logout()">Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                       <div class="navbar-addquestion">
-                         <app-addquestion></app-addquestion>
-                       </div>
-                    </div>
-                </div>
-            </nav>
-            <div class="containter-fluid scrollable">
-              <router-outlet></router-outlet>
-              <app-postlist></app-postlist>
+                        <li>
+                            <a href="#" onclick="logout()">Sign Out
+                                <span class="glyphicon glyphicon-log-out pull-right"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="navbar-addquestion">
+                <app-addquestion></app-addquestion>
             </div>
-            
-            
-            
-
-</div>
+        </div>
+    </div>
+</nav>

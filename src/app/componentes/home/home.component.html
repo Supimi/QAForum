@@ -1,52 +1,121 @@
-<div class="container">
-  <div class="header">
-    <img src="../../assets/img/logo.png" alt="">
+<app-navbar></app-navbar>
 
-    <ul class="nav nav-pills pull-right">
-      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact : true}">Home</a></li>
-      <li><a routerLink="/signup" routerLinkActive="active">Sign up</a></li>
-      <li><a routerLink="/signin" routerLinkActive="active">Sign In</a></li>
-    </ul>
-  </div>
-<div class="img-header">
-  <img src="../assets/img/cover.jpg" alt="" id="cover" name='cover' class="cover" height="200px" width="1350px">
-  <div class="centered">
-    <h1>Q&A Forum</h1>
-    <h2>Department of Computer Science and Engineering</h2>
+<div class="main">
+  <div class="container">
+    <div class="header">
+      <div class="img-header">
+        <img src="../assets/img/cover.jpg" alt="" id="cover" name='cover' class="cover" height="200px" width="1350px">
+        <div class="centered">
+          <h1>Q&A Forum</h1>
+          <h2>Department of Computer Science and Engineering</h2>
+          <h3>University of Moratuwa</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-group">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" href="#collapse1">
+              <h4>Academic Subjects</h4>
+            </a>
+          </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse">
+          <div class="panel-body">
+            <p>You can add academic subject related questions in Qsolver and get proper solutions by your academic staff.Post
+              your questions here and get the most reliable solutions.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" href="#collapse2">
+              <h4>Event Organization</h4>
+            </a>
+          </h4>
+        </div>
+        <div id="collapse2" class="panel-collapse collapse">
+          <div class="panel-body">
+            <p>Events are the best memories in the University.You may have to face different problems when organizing events.
+              This is your place to get quick solutions.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" href="#collapse3">
+              <h4>Industry and Internships</h4>
+            </a>
+          </h4>
+        </div>
+        <div id="collapse3" class="panel-collapse collapse">
+          <div class="panel-body">
+            <p>Interships in CSE is more exciting. Probably you may have different questions about Industry. Take this opportunity
+              to get the answers from the professional bodies in the industry</p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" href="#collapse4">
+              <h4>Postgraduate Studies</h4>
+            </a>
+          </h4>
+        </div>
+        <div id="collapse4" class="panel-collapse collapse">
+          <div class="panel-body">
+            <p>If you have questions related to higher study opporunities, Post your questions and take the proper answers.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" href="#collapse5">
+              <h4>Researches</h4>
+            </a>
+          </h4>
+        </div>
+        <div id="collapse5" class="panel-collapse collapse">
+          <div class="panel-body">
+            <p>If you have any questions related to researches, Post your questions and have the answers from the specialized
+              people in that area.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" href="#collapse6">
+              <h4>Other</h4>
+            </a>
+          </h4>
+        </div>
+        <div id="collapse6" class="panel-collapse collapse">
+          <div class="panel-body">
+            <p>Other than the questions mentioned above you can add any question in the CSE.
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
   </div>
 </div>
 
-<div class="jumbotron">
-  <h3>University of Moratuwa</h3>
-</div>
-
-<div class="row marketing">
-  <div class="col-lg-6">
-    <h4>Academic</h4>
-    <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-
-    <h4>Event Organization</h4>
-    <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
-
-    <h4>Industry and Internships</h4>
-    <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
-  </div>
-
-  <div class="col-lg-6">
-    <h4>Postgraduate Studies</h4>
-    <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-
-    <h4>Researches</h4>
-    <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
-
-    <h4>Other</h4>
-    <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
-  </div>
-</div>
-<div class="footer">
-  <p>&copy; CSE</p>
-</div>
-
-</div> <!-- /container -->
-
-
+<app-footer></app-footer> 

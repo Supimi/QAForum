@@ -1,34 +1,44 @@
+<app-navbar></app-navbar>
 <div class="container">
-  <div class="header">
-    <img src="../../assets/img/logo.png" alt="">
+  <div class="row">
+    <div class="col-md-8">
+      <section>
+        <h1 class="entry-title">
+          <span>Sign In </span>
+        </h1>
+        <hr>
+        <form [formGroup]="signinForm" method="post" action="" (ngSubmit)="signin(signinForm.value)">
 
-    <ul class="nav nav-pills pull-right">
-      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact : true}">Home</a></li>
-      <li><a routerLink="/signup" routerLinkActive="active">Sign up</a></li>
-      <li><a routerLink="/signin" routerLinkActive="active">Sign In</a></li>
-    </ul>
-   
+          <div class="form-group">
+            <label for="email"> Email </label>
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="glyphicon glyphicon-envelope"></i>
+              </span>
+              <input type="text" class="form-control" placeholder="Enter Username" id="email" name="email" formControlName="email">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="password"> Password </label>
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="glyphicon glyphicon-lock"></i>
+              </span>
+              <input type="password" class="form-control" placeholder="Enter Password" id="password" name="password" formControlName="password">
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+
+          <span> {{message}}</span>
+        </form>
+      </section>
+    </div>
   </div>
-
-<h2 class="page-header">Sign In to Your Account</h2>
-
-<form [formGroup]="signinForm" method="post" action="" (ngSubmit)="signin(signinForm.value)">
-
-  <div class="form-group" >
-    <label for="email"> Email </label>
-    <input type="text" class="form-control" placeholder="Enter Username" id="email" name="email" formControlName="email">
-  </div>
-  <div class="form-group">
-    <label for="password"> Password </label>
-    <input type="password" class="form-control" placeholder="Enter Password" id="password" name="password" formControlName="password">
-  </div>
-  <button type="submit" class="btn btn-default">Submit</button>
-</form>
-
-<span> {{message}}</span>
-
-<div class="footer">
-  <p>&copy; CSE</p>
 </div>
 
-</div> <!-- /container -->
+<app-footer></app-footer>

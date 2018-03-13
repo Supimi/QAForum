@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
-import { DataService } from './data.service';
 import { AppComponent } from './app.component';
 import { SigninComponent } from './componentes/signin/signin.component';
 import { SignupComponent } from './componentes/signup/signup.component';
@@ -13,7 +12,6 @@ import { SignupService} from './services/signup.service';
 import { SigninService} from './services/signin.service';
 import { ProfileComponent } from './componentes/user/profile/profile.component';
 import { UserComponent } from './componentes/user/user.component';
-import { SignupnavComponent } from './componentes/signup/signupnav/signupnav.component';
 import { SignupStudentComponent } from './componentes/signup/signup-student/signup-student.component';
 import { SignupOtherComponent } from './componentes/signup/signup-other/signup-other.component';
 import { NavbarComponent } from './componentes/home/navbar/navbar.component';
@@ -21,6 +19,18 @@ import { AddquestionComponent } from './componentes/user/addquestion/addquestion
 import { QuestionService } from './services/question.service';
 import { PostlistComponent } from './componentes/user/postlist/postlist.component';
 import { UserService } from './services/user.service';
+import { FooterComponent } from './componentes/home/footer/footer.component';
+import { SignupselectionComponent } from './componentes/signup/signupselection/signupselection.component';
+import { AlumniComponent } from './componentes/signup/alumni/alumni.component';
+import { QuestionComponent } from './componentes/question/question.component';
+import { QuestionsupportService } from './services/questionsupport.service';
+import { FrontpageComponent } from './componentes/user/frontpage/frontpage.component';
+import { HistoryComponent } from './componentes/user/history/history.component';
+import { AnswerComponent } from './componentes/answer/answer.component';
+import { RatingComponent } from './componentes/answer/rating/rating.component';
+import { AnswerlistComponent } from './componentes/question/answerlist/answerlist.component';
+import { SearchComponent } from './componentes/user/search/search.component';
+
 
 const appRoutes: Routes = [
   {
@@ -34,11 +44,21 @@ const appRoutes: Routes = [
   {
     path: 'signup',
     component: SignupComponent,
+    children: [{path: 'signupselection' , component : SignupselectionComponent},
+    {path: 'signupstudent' , component : SignupStudentComponent},
+    {path: 'signupalumni' , component :  AlumniComponent},
+    {path: 'signupacademic' , component : SignupOtherComponent}
+    
+  ]
   },
   {
     path: 'user',
     component: UserComponent,
-    children: [{path: 'profile' , component : ProfileComponent}]
+    children: [{path: 'profile' , component :FrontpageComponent},{path: 'recent' , component : PostlistComponent },{path: 'history' , component :  HistoryComponent },{path: 'admin' , component :AdminComponent}]
+  },
+  {
+    path: 'question',
+    component: QuestionComponent
   },
 ];
 
@@ -51,18 +71,27 @@ const appRoutes: Routes = [
     AdminComponent,
     ProfileComponent,
     UserComponent,
-    SignupnavComponent,
     SignupStudentComponent,
     SignupOtherComponent,
     NavbarComponent,
     AddquestionComponent,
-    PostlistComponent
+    PostlistComponent,
+    FooterComponent,
+    SignupselectionComponent,
+    AlumniComponent,
+    QuestionComponent,
+    FrontpageComponent,
+    HistoryComponent,
+    AnswerComponent,
+    RatingComponent,
+    AnswerlistComponent,
+    SearchComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
     BrowserModule, HttpModule, FormsModule, ReactiveFormsModule
   ],
-  providers: [DataService, SignupService, SigninService, QuestionService,UserService ],
+  providers: [SignupService, SigninService, QuestionService,UserService,QuestionsupportService ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

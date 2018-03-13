@@ -1,22 +1,6 @@
-/* Space out content a bit */
-
-body {
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
-}
 
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-}
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
   margin-top: 0;
@@ -37,9 +21,6 @@ body {
   .container {
     max-width: 1000px;
   }
-}
-.container-narrow > hr {
-  margin: 30px 0;
 }
 
 /* Main marketing message and sign up button */
@@ -87,10 +68,9 @@ a.active{
     position: relative;
     text-align: center;
     color: white;
-    font-size: 100%;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
-    
+
   }
+ 
 }
 
 /* resize image */
@@ -104,10 +84,25 @@ a.active{
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  font-family: "Open Sans";
+  font-weight: bold;
+  font-size: 2.5em;
+  text-shadow: darkred;
 }
 
 .navbar-brand>img {
   height: 100%;
   padding: 15px;
   width: auto;
+}
+
+.panel-group{
+  padding-top: 10px;
+}
+
+.panel-heading{
+  background-color: grey;
+  font-family:  "Open Sans";
+  font-style: oblique;
+  font-weight: bold;
 }
