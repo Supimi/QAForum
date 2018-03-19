@@ -415,8 +415,8 @@ module.exports = function (app, express) {
     var transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'supimi.15@cse.mrt.ac.lk',
-        pass: 'spG1@mora'
+        user: 'xxxx',
+        pass: 'xxxx'
       },
       tls: {
         rejectUnauthorized: false
@@ -460,7 +460,7 @@ module.exports = function (app, express) {
 
     var options = {
       auth: {
-        api_key: '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'
+        api_key: 'xxx'
       }
     }
 
