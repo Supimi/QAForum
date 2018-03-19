@@ -5,6 +5,8 @@ var Admin_Notification = require('../models/admin_notification');
 var config = require('../../config');
 var secretKey = config.secretKey;
 var jsonwebtoken = require('jsonwebtoken');
+var nodemailer = require("nodemailer");
+var sgTransport = require('nodemailer-sendgrid-transport');
 
 //create text indexes for questions
 var createHashedIndex = function (db, callback) {
@@ -106,37 +108,37 @@ module.exports = function (app, express) {
   api.post('/login', function (req, res) {
     User.findOne({
       email: req.body.email
-    },{
-      usertype:1,password:1
-    }).exec(function (err, user) {
-      if (err) throw err;
+    }, {
+        usertype: 1, password: 1
+      }).exec(function (err, user) {
+        if (err) throw err;
 
-      if (!user) {
-        res.send({
-          success: false,
-          message: "User doesn't exist."
-        });
-      } else if (user) {
-        var validPassword = user.comparePassword(req.body.password);
-
-        if (!validPassword) {
+        if (!user) {
           res.send({
             success: false,
-            message: 'Invalied Password'
-          })
-        } else {
-          //create a token
-          var token = createToken(user);
-
-          res.json({
-            success: true,
-            message: 'successfully login!',
-            token: token,
-            usertype:user.usertype
+            message: "User doesn't exist."
           });
+        } else if (user) {
+          var validPassword = user.comparePassword(req.body.password);
+
+          if (!validPassword) {
+            res.send({
+              success: false,
+              message: 'Invalied Password'
+            })
+          } else {
+            //create a token
+            var token = createToken(user);
+
+            res.json({
+              success: true,
+              message: 'successfully login!',
+              token: token,
+              usertype: user.usertype
+            });
+          }
         }
-      }
-    });
+      });
 
   });
 
@@ -387,7 +389,7 @@ module.exports = function (app, express) {
 
   api.post('/answers', function (req, res) {
     Answer.find({
-      refered_question:req.body.ref_question
+      refered_question: req.body.ref_question
     }).exec(function (err, answers) {
       if (err) {
         console.log('answers cannot fetch');
@@ -408,7 +410,92 @@ module.exports = function (app, express) {
     });
   });
 
-  
+  api.get('/nodemailer', function (req, res) {
+    console.log("from nodemailer");
+    var transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'supimi.15@cse.mrt.ac.lk',
+        pass: 'spG1@mora'
+      },
+      tls: {
+        rejectUnauthorized: false
+      }
+    });
+
+    var mailOptions = {
+      from: 'supimi.15@cse.mrt.ac.lk',
+      to: 'supimipiumika@gmail.com',
+      subject: 'Sending Email using Node.js',
+      text: 'That was easy! Pissu hutan'
+    };
+
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+        res.json({
+          success: false,
+          message: 'Error while sending email',
+        });
+      } else {
+        console.log('Email sent: ' + info.response);
+        res.json({
+          success: true,
+          message: 'Email sent',
+        });
+      }
+    });
+
+  });
+
+  api.get('/sendgrid', function (req, res) {
+    console.log("from sendgrid");
+    var transporter = nodemailer.createTransport({
+      service: 'SendGrid',
+      auth: {
+        user: 'supimip',
+        pass: '1995supimi'
+      },
+    });
+
+    var options = {
+      auth: {
+        api_key: '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'
+      }
+    }
+
+    var transporter = nodemailer.createTransport(sgTransport(options));
+
+    var email = {
+      to: ['supimipiumika@gmail.com', 'supimigamage@gmail.com'],
+      from: 'innovineqsolver@gmail.com',
+      subject: 'QSolver',
+      text: 'Login to your account using following password',
+      html:'<b>Login to your account using following password</b>'
+    };
+
+    transporter.sendMail(email, function (err, info) {
+      if (err) {
+        console.log(err);
+        res.json({
+          success: false,
+          message: 'Error while sending email',
+        });
+      }
+      else {
+        console.log(info);
+        res.json({
+          success: true,
+          message: 'Email sent',
+        });
+      }
+
+    });
+
+  });
+
+
+
 
 
 
