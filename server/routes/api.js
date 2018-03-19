@@ -453,8 +453,8 @@ module.exports = function (app, express) {
     var transporter = nodemailer.createTransport({
       service: 'SendGrid',
       auth: {
-        user: 'supimip',
-        pass: '1995supimi'
+        user: 'xx',
+        pass: 'xx'
       },
     });
 
