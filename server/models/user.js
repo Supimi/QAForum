@@ -11,6 +11,7 @@ var UserSchema = new Schema({
   password: {type:String, required:true, select:false},
   index:{type:String, required: false},
   specialization:{type:[String], required: false},
+  non_aca_specialization:{type:[String], required: false},
   position:{type:String, required: false},
   working_place:{type:String, required: false},
 });
