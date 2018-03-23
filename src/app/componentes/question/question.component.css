@@ -1,0 +1,26 @@
+.body {
+    padding-top: 54px;
+  }
+  
+  @media (min-width: 992px) {
+    .body {
+      padding-top: 56px;
+    }
+  }
+
+.content{
+    align-items: center;
+}
+
+.jumbotron {
+    text-align: left;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+ /* Responsive: Portrait tablets and up */
+ @media screen and (min-width: 768px) {
+
+  .jumbotron {
+    border-bottom: 0;
+  }
+}

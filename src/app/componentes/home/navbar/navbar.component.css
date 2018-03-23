@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400');
+
+html, body {
+  font-family: 'Lato', serif;
+}
+
+.navbar-default {
+  font-size: 1.15em;
+  font-weight: 400;
+  background-color: #3e404c;
+  padding: 10px;
+  border: 0px;
+  border-radius: 0px;
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: white;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+  color: #cbf0ff;
+}
+
+.navbar-default .navbar-brand {
+  color: #e6d19a;
+}
+
+.navbar-default .navbar-brand:hover {
+  color: #ffffff;
+  text-shadow: 1px -1px 8px #b3e9ff;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus {
+  background-color: #004059;
+  color: white;
+}
+
+.navbar-default .navbar-toggle {
+  border: none;
+}
+
+.navbar-default .navbar-collapse, .navbar-default {
+  border: none;
+}
+
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+  background-color: #002433;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #ffffff;
+}
+
+@media (max-width: 767px) {
+
+}
+
+
+

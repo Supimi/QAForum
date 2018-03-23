@@ -1,0 +1,17 @@
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+    .jumbotron {
+      border-bottom: 0;
+    }
+  }
+
+.rating_panelmain{
+  width: 50%;
+  float: left;
+  background-color: wheat;
+}
+
+
+ul{
+  margin-left: 3%;
+}

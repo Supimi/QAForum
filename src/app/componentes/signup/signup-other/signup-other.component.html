@@ -1,0 +1,110 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <section>
+        <h1 class="entry-title">
+          <span>Sign Up - Academic Staff</span>
+        </h1>
+        <hr>
+        <form [formGroup]="signupForm" class="form-horizontal" method="post" action="" (ngSubmit)="signupRequest(signupForm.value)">
+
+          <div class="form-group">
+            <label class="control-label col-sm-3">First Name
+              <span class="text-danger">*</span>
+            </label>
+            <div class="col-md-8 col-sm-9">
+              <input type="text" class="form-control" placeholder="Firstname" id="firstname" name="firstname" formControlName="firstname">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-sm-3">Last Name
+              <span class="text-danger">*</span>
+            </label>
+            <div class="col-md-8 col-sm-9">
+              <input type="text" class="form-control" placeholder="Lastname" id="lastname" name="lastname" formControlName="lastname">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-sm-3">Username
+              <span class="text-danger">*</span>
+            </label>
+            <div class="col-md-8 col-sm-9">
+              <input type="text" class="form-control" placeholder="Username" id="username" name="username" formControlName="username">
+            </div>
+          </div>
+
+
+
+          <div class="form-group">
+            <label class="control-label col-sm-3">Email
+              <span class="text-danger">*</span>
+            </label>
+            <div class="col-md-8 col-sm-9">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-envelope"></i>
+                </span>
+                <input type="text" class="form-control" placeholder="Email" id="email" name="email" formControlName="email">
+              </div>
+              <small> Use you CSE email to sign up to QSolver. </small>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label class="control-label col-sm-3">Position
+              <span class="text-danger">*</span>
+            </label>
+            <div class="col-md-8 col-sm-9">
+              <input type="text" class="form-control" placeholder="position" id="position" name="position" formControlName="position">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-sm-3">Specilizations (Academic related)
+              <span class="text-danger">*</span>
+            </label>
+            <div class="col-md-8 col-sm-9">
+              <select name="type" class="form-control" placeholder="Select specialization" id="specialization" formControlName="specialization">
+                <option value="OOP">OOP </option>
+                <option value="OOSD">OOSD</option>
+                <option value="SE">Software Engineering</option>
+                <option value="DBSM">Database and Design</option>
+                <option value="TOC">Theory of Computing</option>
+                <option value="IS" selected>Interlligent Systems</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-sm-3">Other Specilizations
+              <span class="text-danger">*</span>
+            </label>
+            <div class="col-md-8 col-sm-9">
+              <select name="type" class="form-control" placeholder="Select the question type" formControlName="other_spec" id="other_spec">
+                <option value="Event Organization">Event Organization</option>
+                <option value="Industry and Internship">Industry and internship</option>
+                <option value="Postgraduate Studies">Postgraduate Studies</option>
+                <option value="Researches">Researches</option>
+              </select>
+            </div>
+          </div>
+
+          <span class="err">{{err}}</span>
+          <span class="messagedisplay">{{msg}}</span>
+
+          <div class="form-group">
+            <div class="col-xs-offset-3 col-xs-10">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </div>
+        </form>
+      </section>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

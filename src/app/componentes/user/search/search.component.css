@@ -1,0 +1,24 @@
+.custom-search input {
+	background: rgba(255, 255, 255, 1) url("https://image.flaticon.com/icons/svg/126/126474.svg") no-repeat scroll right center / 30px 18px;
+	padding-right: 20px;
+	transition: all 0.5s ease 0s;
+	width: 30px;
+}
+
+.custom-search input:focus {
+	width: 100%;
+}
+
+.card{
+    background-color:white;
+    padding: 10px 10px 10px 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 5px; /* 5px rounded corners */
+    transition: 0.3s;
+    margin: 0 auto;
+}
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+

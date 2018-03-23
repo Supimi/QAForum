@@ -1,0 +1,105 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <section>
+        <h1 class="entry-title">
+          <span>Sign Up - Student</span>
+        </h1>
+        <hr>
+        <form [formGroup]="signupForm" class="form-horizontal" method="post" action="" (ngSubmit)="signup(signupForm.value)">
+
+          <div class="form-group">
+            <label class="control-label col-sm-3">First Name
+              <span class="text-danger">*</span>
+            </label>
+            <div class="col-md-8 col-sm-9">
+              <input type="text" class="form-control" placeholder="Firstname" id="firstname" name="firstname" formControlName="firstname">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-sm-3">Last Name
+              <span class="text-danger">*</span>
+            </label>
+            <div class="col-md-8 col-sm-9">
+              <input type="text" class="form-control" placeholder="Lastname" id="lastname" name="lastname" formControlName="lastname">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-sm-3">Username
+              <span class="text-danger">*</span>
+            </label>
+            <div class="col-md-8 col-sm-9">
+              <input type="text" class="form-control" placeholder="Username" id="username" name="username" formControlName="username">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-sm-3">Index Number
+              <span class="text-danger">*</span>
+            </label>
+            <div class="col-md-8 col-sm-9">
+              <input type="text" class="form-control" placeholder="Index Number" id="index" name="index" formControlName="index">
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label class="control-label col-sm-3">Email
+              <span class="text-danger">*</span>
+            </label>
+            <div class="col-md-8 col-sm-9">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-envelope"></i>
+                </span>
+                <input type="text" class="form-control" placeholder="Email" id="email" name="email" formControlName="email">
+              </div>
+              <small> Use you CSE email to sign up to QSolver. </small>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-sm-3">Password
+              <span class="text-danger">*</span>
+            </label>
+            <div class="col-md-5 col-sm-8">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-lock"></i>
+                </span>
+                <input type="password" class="form-control" placeholder="Password" id="password" name="password"  pattern=".{6,}"  formControlName="password">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-3">Confirm Password
+              <span class="text-danger">*</span>
+            </label>
+            <div class="col-md-5 col-sm-8">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-lock"></i>
+                </span>
+                <input type="password" class="form-control" placeholder="Password Confirmation" id="confirmpassword"  pattern=".{6,}"  formControlName="confirmpassword">
+              </div>
+            </div>
+          </div>
+          
+
+          <span class="err">{{err}}</span>
+
+          <div class="form-group">
+            <div class="col-xs-offset-3 col-xs-10">
+              <button type="submit"  class="btn btn-primary">Submit</button>
+            </div>
+          </div>
+        </form>
+      </section>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

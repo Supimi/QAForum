@@ -1,0 +1,30 @@
+<div>
+  <hr>
+  <div class="container">
+    <p>{{answer.answer_content}}</p>
+  </div>
+  <ul class="list-inline list-unstyled">
+    <li>
+      <span>
+        <i class="glyphicon glyphicon-calendar"></i>1 day</span>
+    </li>
+    <li>|</li>
+    <li>
+      <span>
+        <i class="glyphicon glyphicon-comment"></i> 0 comments</span>
+    </li>
+    <li>|</li>
+    <li (click)='rate()'>
+      <span>
+        <i class="glyphicon glyphicon-thumbs-up"></i> Rate</span>
+    </li>
+    <li>|</li>
+  </ul>
+  <div class="rating_panelmain">
+    <div [id]="rating_panel">
+      <app-rating [rating]=' ratingClicked' (ratingClick)='ratingComponetClick($event)'></app-rating>
+    </div>
+
+  </div>
+
+</div>
