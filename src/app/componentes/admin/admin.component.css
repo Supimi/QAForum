@@ -269,7 +269,6 @@ background: rgba(0, 0, 0, 0) url("../images/user.png") no-repeat scroll 7px 12px
 .add-project::before {
     /*background: rgba(0, 0, 0, 0) url("../images/plus.png") no-repeat scroll 0 0;*/
     content: "";
-    ;
     height: 12px;
     left: 17px;
     position: absolute;
@@ -320,16 +319,7 @@ background: rgba(0, 0, 0, 0) url("../images/user.png") no-repeat scroll 7px 12px
     left: -85px;
     padding: 17px;
 }
-.view {
-    background: #5584ff none repeat scroll 0 0;
-    border-radius: 100px;
-    color: #ffffff;
-    display: inline-block;
-    font-size: 14px;
-    font-weight: 600;
-    margin-top: 10px;
-    padding: 10px 15px;
-}
+
 
 .navbar-content > span {
     font-size: 13px;
@@ -514,7 +504,7 @@ header {
     color: #fff;;
     opacity: 1;
     text-shadow: none;
-}
+}/**/
 .modal-body input {
     border: 1px solid #d4d9e3;
     font-size: 14px;

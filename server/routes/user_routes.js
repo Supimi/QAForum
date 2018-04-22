@@ -132,10 +132,7 @@ function updateUser(req, res) {
                 position: req.body.position,
                 working_place: req.body.working_place
             }
-        }, { new: true }, function (err, modifieduser) {
-            if (err) return handleError(err);
-            res.send(modifieduser);
-        });
+        }, );
 }
 
 //delete a user
@@ -152,6 +149,63 @@ function deleteUser(req, res) {
             return res.status(200).send(response);
         }
     });
+}
+
+//search users
+function searchUsers(req, res) {
+    var names = (req.query.searchtxt).split(" ");
+    if (names.length == 1) {
+        User.find({
+            $or: [{ firstname: { $regex: '.*' + (req.query.searchtxt) + '.*', $options: 'i' } },
+            { lastname: { $regex: '.*' + (req.query.searchtxt) + '.*', $options: 'i' } },
+            { username: { $regex: '.*' + (req.query.searchtxt) + '.*', $options: 'i' } },
+            { email: { $regex: '.*' + (req.query.searchtxt) + '.*', $options: 'i' } }
+            ]
+
+        }).exec(function (err, results) {
+            if (err) {
+                res.status(500).send(err);
+                console.log(err);
+            }
+            res.json(results);
+        });
+
+    } else {
+        User.find({
+            $or: [{ firstname: { $regex: '.*' + (req.query.searchtxt).split(" ")[0] + '.*', $options: 'i' } },
+            { lastname: { $regex: '.*' + (req.query.searchtxt).split(" ")[0] + '.*', $options: 'i' } },
+            { username: { $regex: '.*' + (req.query.searchtxt).split(" ")[0] + '.*', $options: 'i' } },
+            { email: { $regex: '.*' + (req.query.searchtxt).split(" ")[0] + '.*', $options: 'i' } },
+            { firstname: { $in: names } }, { lastname: { $in: names } }, { username: { $in: names } }
+            ]
+
+        }).exec(function (err, results) {
+            if (err) {
+                res.status(500).send(err);
+                console.log(err);
+            }
+            res.json(results);
+        });
+    }
+}
+
+function getUserCount(req, res) {
+    User.aggregate([
+        {
+            $group: {
+                _id: '$usertype',
+                count: { $sum: 1 }
+            }
+        }
+    ], function (err, count) {
+        if (err) {
+            console.log("Cannot take the user count");
+        }
+        else {
+            res.json(count);
+        }
+    });
+
 }
 
 //get the username by id
@@ -194,7 +248,7 @@ function getUsername2(req, res) {
     });
 }
 
-module.exports = { adduser, checkuser, getUsers, getUser, updateUser, deleteUser, getUsername1, getUsername2 };
+module.exports = { adduser, checkuser, getUsers, getUser, updateUser, deleteUser, searchUsers, getUserCount, getUsername1, getUsername2 };
 
 
 

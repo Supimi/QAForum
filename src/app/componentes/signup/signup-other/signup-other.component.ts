@@ -48,7 +48,7 @@ export class SignupOtherComponent implements OnInit {
   signupRequest(post) {
     if (this.validateEmail(post.email)) {
       this.err='';
-      this._signupService.signupRequest(post.firstname, post.lastname, post.username, this.usertype, post.email, post.specialization, null, post.position, "CSE", false).subscribe(
+      this._signupService.signupRequest(post.firstname, post.lastname, post.username, this.usertype, post.email, post.specialization, null, post.position, "CSE").subscribe(
         res => {
           this.signupForm.reset();
           if (res.success) { this.msg = 'Your resonse is recorded as SignUp request.'; }

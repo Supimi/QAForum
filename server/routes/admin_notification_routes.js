@@ -7,11 +7,9 @@ function addUserRequest(req, res) {
         username: req.body.username,
         usertype: req.body.usertype,
         email: req.body.email,
-        specialization: req.body.specialization,
-        index: req.body.index,
         position: req.body.position,
-        working_place: req.body.working_place,
-        status: req.body.status,
+        status: false,
+        viewstatus: false,
         date: new Date()
     });
 
@@ -42,6 +40,34 @@ function getAdminNotifications(req, res) {
     });
 }
 
+function updateNotificationStatus(req, res) {
+    Admin_Notification.findByIdAndUpdate(
+        req.body.id,
+        {
+            $set: {
+                status: true
+            }
+        }, { new: true }, function (err, request) {
+            if (err) return handleError(err);
+            res.send(request.status);
+        }
+    );
+}
+
+function updateViewStatus(req, res) {
+    Admin_Notification.findByIdAndUpdate(
+        req.body.id,
+        {
+            $set: {
+                viewstatus: true
+            }
+        }, { new: true }, function (err, viewstatus) {
+            if (err) return handleError(err);
+            res.send(viewstatus);
+        }
+    );
+}
 
 
-module.exports = { addUserRequest, getAdminNotifications };
+
+module.exports = { addUserRequest, getAdminNotifications, updateNotificationStatus, updateViewStatus };

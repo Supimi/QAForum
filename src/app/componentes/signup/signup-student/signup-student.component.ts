@@ -57,7 +57,7 @@ export class SignupStudentComponent implements OnInit {
           // Set localStorage item
           localStorage.setItem('userObject', JSON.stringify(userObject));
   
-          if (res.success) {this._router.navigate(['/user/profile']); }
+          if (res.success) {this._router.navigate(['/user/recent']); }
         },
         error=>{
           console.log("signup is failed.");

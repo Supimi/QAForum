@@ -1,24 +1,180 @@
+.search-title{
+    float:left;
+    font-family:sans-serif;
+    font-weight: bold;
+    font-size: medium;
+    width:35%;
+    padding: 30px 20px 10px 20px;
+    text-align: right;
+    display: table-cell;
+    vertical-align: middle;
+}
+
 .custom-search input {
+    float: left;
+    background-color: steelblue;
 	background: rgba(255, 255, 255, 1) url("https://image.flaticon.com/icons/svg/126/126474.svg") no-repeat scroll right center / 30px 18px;
-	padding-right: 20px;
 	transition: all 0.5s ease 0s;
-	width: 30px;
+    width: 500px;
+}
+
+#submit_btn{
+    visibility: hidden;
+}
+
+.custom-search {
+    padding: 20px;
+    vertical-align: middle;
 }
 
 .custom-search input:focus {
-	width: 100%;
+    width: 100%;
+
 }
 
-.card{
+.container{
     background-color:white;
-    padding: 10px 10px 10px 10px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    border-radius: 5px; /* 5px rounded corners */
+    box-shadow: 4px 6px 4px rgba(0,0,0,0.2);
+    border-radius: 0px; 
     transition: 0.3s;
-    margin: 0 auto;
+    overflow: hidden;
+    display: inline-block;
+    height: 100px;
+    width: 100%;
+   /* background-color: #e7e7e7;*/
 }
 /* On mouse-over, add a deeper shadow */
-.card:hover {
+.container:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    overflow: auto; /* Enable scroll if needed */
+    width: 75%;
+    height: auto;
+    float: left;
+    padding-top: 130px;
+    float: left;
+
+}
+
+.modal-dialog {
+    width: 100%;
+    height:auto;
+    height: 80%;
+    margin: 0 auto;
+    padding: 0px;
+    max-height:auto;
+}
+
+
+.modal-content {
+    background-color: #fefefe;
+    width: 100%;
+    height: 100%;
+    min-height: auto;
+    border-radius: 0;
+    border: none;
+    -webkit-box-shadow: 0 5px 15px rgba(0,0,0,0);
+    -moz-box-shadow: 0 5px 15px rgba(0,0,0,0);
+    -o-box-shadow: 0 5px 15px rgba(0,0,0,0);
+    box-shadow:  4px 6px 4px rgba(0,0,0,0.2);
+}
+.table{
+    background-color: #f4f4ff;
+    font-family: sans-serif;
+    padding: 20px;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: #a3c2c2;
+  }
+
+.modal-body{
+    height: 85%;
+    overflow-y: scroll;
+}
+.modal-footer{
+    height: 15%;
+}
+
+
+body.modal-open {
+    overflow: hidden;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .custom-search input {
+        width: 30px;
+    }
+    .search-title{
+        font-size: small;
+        width: 60%;
+    }
+    .container{
+        height: 60px;
+    }
+} 
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .custom-search input {
+        width: 150px;
+    }
+    .search-title{
+        font-size: small;
+        width: 50%;
+    }
+    .container{
+        height: 80px;
+    }
+} 
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .custom-search input {
+        width: 300px;
+    }
+    .search-title{
+        font-size: small;
+        width: 40%;
+    }
+    .container{
+        height: 90px;
+    }
+} 
+
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .custom-search input {
+        width: 400px;
+    }
+    .search-title{
+        font-size: medium;
+        width: 35%;
+    }
+    .container{
+        height: 100px;
+    }
+} 
+
+@media only screen and (min-width: 1200px) {
+    .custom-search input {
+        width: 500px;
+    }
+    .search-title{
+        font-size: medium;
+        width: 35%;
+    }
+    .container{
+        height: 100px;
+    }
+
 }
 

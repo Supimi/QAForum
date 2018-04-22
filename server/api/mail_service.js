@@ -53,11 +53,11 @@ function send_emails(req, res) {
     var transporter = nodemailer.createTransport(sgTransport(options));
 
     var email = {
-      to: ['supimipiumika@gmail.com', 'supimigamage@gmail.com'],
+      to: req.body.email,
       from: 'innovineqsolver@gmail.com',
-      subject: 'QSolver Notice',
-      text: 'Login to your account using password ="123456"',
-      html: '<b>\'Login to your account using password ="123456"\'</b>'
+      subject: req.body.subject,
+      text: req.body.message,
+      html: '<b>'+req.body.message+'</b>'
     };
 
     transporter.sendMail(email, function (err, info) {

@@ -16,6 +16,7 @@ export class QuestionComponent implements OnInit {
   user_posted: string;
   date_posted: string;
   user:string;
+  anonymous:boolean;
 
   constructor(private _questionsupportService: QuestionsupportService) {
     // Retrieve the object from localStorage
@@ -38,7 +39,13 @@ export class QuestionComponent implements OnInit {
       this.tags= res.tags;
       this.type=res.type;
       this.user_posted=res.user_posted;
-      this.date_posted=res.date_posted;
+      this.anonymous=res.anonymous;
+      if(this.anonymous){
+        this.date_posted=null;
+      }
+      else{
+        this.date_posted=res.date_posted;
+      }
 
       console.log( this.q_content, res.question_content);
     },

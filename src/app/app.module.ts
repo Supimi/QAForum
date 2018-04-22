@@ -4,12 +4,12 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { SigninComponent } from './componentes/signin/signin.component';
 import { SignupComponent } from './componentes/signup/signup.component';
-import { RouterModule, Routes} from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './componentes/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminComponent } from './componentes/admin/admin.component';
-import { SignupService} from './services/signup.service';
-import { SigninService} from './services/signin.service';
+import { SignupService } from './services/signup.service';
+import { SigninService } from './services/signin.service';
 import { ProfileComponent } from './componentes/user/profile/profile.component';
 import { UserComponent } from './componentes/user/user.component';
 import { SignupStudentComponent } from './componentes/signup/signup-student/signup-student.component';
@@ -24,12 +24,21 @@ import { SignupselectionComponent } from './componentes/signup/signupselection/s
 import { AlumniComponent } from './componentes/signup/alumni/alumni.component';
 import { QuestionComponent } from './componentes/question/question.component';
 import { QuestionsupportService } from './services/questionsupport.service';
-import { FrontpageComponent } from './componentes/user/frontpage/frontpage.component';
 import { HistoryComponent } from './componentes/user/history/history.component';
 import { AnswerComponent } from './componentes/answer/answer.component';
 import { RatingComponent } from './componentes/answer/rating/rating.component';
 import { AnswerlistComponent } from './componentes/question/answerlist/answerlist.component';
 import { SearchComponent } from './componentes/user/search/search.component';
+import { HomepageComponent } from './componentes/admin/homepage/homepage.component';
+import { AdminHomeComponent } from './componentes/admin/admin-home/admin-home.component';
+import { NavbarAdminComponent } from './componentes/admin/navbar-admin/navbar-admin.component';
+import { SpecializationComponent } from './componentes/admin/specialization/specialization.component';
+import { UsersComponent } from './componentes/admin/users/users.component';
+import { NotificationsComponent } from './componentes/admin/notifications/notifications.component';
+import { SettingsComponent } from './componentes/admin/settings/settings.component';
+import { AdminService } from './services/admin.service';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { AdminSearchComponent } from './componentes/admin/admin-search/admin-search.component';
 
 
 const appRoutes: Routes = [
@@ -44,22 +53,32 @@ const appRoutes: Routes = [
   {
     path: 'signup',
     component: SignupComponent,
-    children: [{path: 'signupselection' , component : SignupselectionComponent},
-    {path: 'signupstudent' , component : SignupStudentComponent},
-    {path: 'signupalumni' , component :  AlumniComponent},
-    {path: 'signupacademic' , component : SignupOtherComponent}
-    
-  ]
+    children: [{ path: 'signupselection', component: SignupselectionComponent },
+    { path: 'signupstudent', component: SignupStudentComponent },
+    { path: 'signupalumni', component: AlumniComponent },
+    { path: 'signupacademic', component: SignupOtherComponent }
+
+    ]
   },
   {
     path: 'user',
     component: UserComponent,
-    children: [{path: 'profile' , component :FrontpageComponent},{path: 'recent' , component : PostlistComponent },{path: 'history' , component :  HistoryComponent },{path: 'admin' , component :AdminComponent}]
+    children: [{ path: 'recent', component: PostlistComponent }, { path: 'history', component: HistoryComponent }]
   },
   {
     path: 'question',
     component: QuestionComponent
   },
+  {
+    path: 'admin2',
+    component: AdminComponent
+  },
+  {
+    path: 'admin',
+    component: HomepageComponent,
+    children: [{ path: 'home', component: AdminHomeComponent }, { path: 'specialization', component: SpecializationComponent }, { path: 'notification', component: NotificationsComponent },
+    { path: 'users', component: UsersComponent }, { path: 'settings', component: SettingsComponent },{ path: 'search', component: AdminSearchComponent }]
+  }
 ];
 
 @NgModule({
@@ -80,18 +99,25 @@ const appRoutes: Routes = [
     SignupselectionComponent,
     AlumniComponent,
     QuestionComponent,
-    FrontpageComponent,
     HistoryComponent,
     AnswerComponent,
     RatingComponent,
     AnswerlistComponent,
-    SearchComponent
+    SearchComponent,
+    HomepageComponent,
+    NavbarAdminComponent,
+    SpecializationComponent,
+    UsersComponent,
+    NotificationsComponent,
+    SettingsComponent,
+    AdminHomeComponent,
+    AdminSearchComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
-    BrowserModule, HttpModule, FormsModule, ReactiveFormsModule
+    BrowserModule, HttpModule, FormsModule, ReactiveFormsModule, NgxPaginationModule
   ],
-  providers: [SignupService, SigninService, QuestionService,UserService,QuestionsupportService ],
+  providers: [SignupService, SigninService, QuestionService, UserService, QuestionsupportService, AdminService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

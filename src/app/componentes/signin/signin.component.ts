@@ -42,9 +42,9 @@ export class SigninComponent implements OnInit {
           //route to profile
           console.log(res.usertype);
           if (res.usertype == "Admin") {
-            this._router.navigate(['/user/admin']);
+            this._router.navigate(['/admin/home']);
           } else {
-            this._router.navigate(['/user/profile']);
+            this._router.navigate(['/user/recent']);
 
           }
 

@@ -1,12 +1,12 @@
 var Specialization = require('../models/specialization');
 
-//add new specilization to the dattabase
+//add new specilization to the database
 function addSpecilization(req, res) {
     specialization = new Specialization({
         module_code: req.body.module_code,
         module_name: req.body.module_name,
         semester: req.body.semester,
-        stream: req.body.stream
+        stream: req.body.stream,
     });
     specialization.save(function (err) {
         if (err) {

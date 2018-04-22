@@ -45,7 +45,7 @@ export class AlumniComponent implements OnInit {
   }
   signupRequest(post) {
     if (this.validateEmail(post.email)) {
-      this._signupService.signupRequest(post.firstname, post.lastname, post.username, this.usertype, post.email, null, null, post.position, post.working_place, false).subscribe(
+      this._signupService.signupRequest(post.firstname, post.lastname, post.username, this.usertype, post.email, null, null, post.position, post.working_place).subscribe(
         res => {
           console.log(res);
 

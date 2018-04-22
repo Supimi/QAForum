@@ -1,0 +1,77 @@
+.container-left{
+    float: left;
+    width: 75%;
+  }
+  
+  .container-right{
+    float: right;
+    width: 25%;
+  }
+  
+  .post-list{
+    padding: 10px 5px 10px 5px;
+    width: 100%;
+    margin: auto;
+  }
+  
+  .search{
+    padding-top: 50px;
+    position: fixed;
+    width: 75%;
+    z-index: 2;
+  
+  }
+  
+  .inner-container{
+    position: relative;
+    width: 100%;
+    padding: 5px 5px 10px 0px;
+    background-image: url("C:/Users/user/WebstormProjects/newproject/QAForum/src/assets/img/pattern1.png");
+  }
+  
+  .containter-fluid{
+    padding-top: 150px;
+  }
+  .tab{
+    width: 100%;
+    height: 100%;
+    background-color: #f0f5f5;
+    padding-top: 150px;
+  }
+  
+  
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 600px) {
+    .containter-fluid{
+      padding-top: 110px;
+    }
+  } 
+  
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (min-width: 600px) {
+    .containter-fluid{
+      padding-top: 130px;
+    }
+  } 
+  
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (min-width: 768px) {
+    .containter-fluid{
+      padding-top: 140px;
+    }
+  } 
+  
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px) {
+    .containter-fluid{
+      padding-top: 150px;
+    }
+  } 
+  
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  @media only screen and (min-width: 1200px) {
+    .containter-fluid{
+      padding-top: 150px;
+    }
+  }
+  

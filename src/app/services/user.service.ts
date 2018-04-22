@@ -9,28 +9,37 @@ export class UserService {
   email: string;
 
 
-  constructor(private _http: Http) { 
-    
+  constructor(private _http: Http) {
+
   }
 
 
   //get the details of a speccific user using email
-  getUser(email){
-    return this._http.get('http://localhost:3000/api.qsolver.com/user/'+email).map(res=>res.json());
+  getUser(email) {
+    return this._http.get('http://localhost:3000/api.qsolver.com/user/' + email).map(res => res.json());
   }
 
-  setUsername(username){
-    this.username=username;
+  getNotifications(email, token) {
+    return this._http.get('http://localhost:3000/api.qsolver.com/userNotification/'.concat(email), {
+      params: { token: token }
+    }).map(res => res.json());
+
   }
 
-  setEmail(email){
+
+
+  setUsername(username) {
+    this.username = username;
+  }
+
+  setEmail(email) {
     this.email = email;
   }
-  getUsername(){
+  getUsername() {
     return this.username;
   }
 
-  getEmail(){
+  getEmail() {
     return this.email;
   }
 

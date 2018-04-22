@@ -7,6 +7,7 @@ function postquestion(req, res) {
     tags: req.body.tags,
     type: req.body.type,
     user_posted: req.body.user_posted,
+    anonymous: req.body.anonymous,
     date_posted: new Date()
   });
 
@@ -45,6 +46,58 @@ function getquestions(req, res) {
     }
   });
 }
+
+function getuserquestions(req, res) {
+  Question.find({
+    user_posted: req.query.user_posted
+  }).sort({ date_posted: -1 }).exec(function (err, result) {
+    if (err) {
+      console.log('error in accesing DB');
+      res.send({
+        success: false,
+        message: "error"
+      });
+    }
+
+    if (result == null) {
+      res.send({
+        success: false,
+        message: "Question doesn't exist."
+      });
+    } else if (result) {
+      res.json(result);
+    }
+  });
+}
+
+//find set of questions on type and duration
+function getquestionSet(req, res) {
+  Question.find({
+    type: req.header('type'),
+    date_posted: {
+      $gt: new Date('2018-02-15')
+    }
+  }).sort({ date_posted: -1 }).exec(function (err, results) {
+    if (err) {
+      console.log('error in accesing DB');
+      res.send({
+        success: false,
+        message: "error"
+      });
+    }
+
+    if (results == null) {
+      res.send({
+        success: false,
+        message: "Question doesn't exist."
+      });
+    } else if (results) {
+      res.json(results);
+    }
+  });
+
+}
+
 
 //find one question based on its id
 function getquestion(req, res) {
@@ -99,40 +152,21 @@ function deletequestion(req, res) {
   })
 }
 
-function getuserquestions(req, res) {
-  Question.findOne({
-    user_posted: req.query.user_posted
-  }).sort({ date_posted: -1 }).exec(function (err, result) {
-    if (err) {
-      console.log('error in accesing DB');
-      res.send({
-        success: false,
-        message: "error"
-      });
-    }
-
-    if (result == null) {
-      res.send({
-        success: false,
-        message: "Question doesn't exist."
-      });
-    } else if (result) {
-      res.json(result);
-    }
-  });
-}
 
 function searhQuestions(req, res) {
   if (typeof req.body.text !== 'string') {
     return res.status(400);
   }
   var arry = req.body.text.split(" ");
+  console.log(arry, (req.body.text).split(" ")[0]);
 
   Question.find({
     $or: [{ tags: { $in: arry } },
     { type: { $in: arry } },
     { type: req.body.text },
-    { question_content: { $regex: '.*' + (req.body.text).split(".")[0] + '.*' } }
+    { type: { $regex: '.*' + (req.body.text).split(" ")[0] + '.*', $options: 'ix' } },
+    { question_content: { $regex: '.*' + (req.body.text).split(".")[0] + '.*', $options: 'ix' } },
+    { question_content: { $regex: '.*' + (req.body.text).split(" ")[0] + '.*', $options: 'ix' } }
     ]
   }).exec(function (err, results) {
     if (err) {
@@ -146,4 +180,4 @@ function searhQuestions(req, res) {
 
 
 
-module.exports = { postquestion, getquestions, getquestion, updatequestion, deletequestion, getuserquestions,searhQuestions };
+module.exports = { postquestion, getquestions, getquestion, updatequestion, deletequestion, getuserquestions, getquestionSet, searhQuestions };

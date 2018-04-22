@@ -34,7 +34,7 @@ module.exports = function (app, express) {
   api.use(function (req, res, next) {
     console.log('Somebody just came to app!');
 
-    var token = req.body.token || req.headers['x-access-token'] || req.params.token||req.query.token;
+    var token = req.body.token || req.headers['x-access-token'] || req.params.token || req.query.token;
 
     //check if token exist
     if (token) {
@@ -60,6 +60,10 @@ module.exports = function (app, express) {
   //delete a user from the system - only for admin
   api.delete('/user/:email', user_routes.deleteUser);
 
+  api.get('/user/search/adminsearch',user_routes.searchUsers);
+
+  api.get('/user/count/usercount',user_routes.getUserCount);
+
   api.post('/question', question_routes.postquestion);
 
 
@@ -70,22 +74,25 @@ module.exports = function (app, express) {
   //retrieve the all questions from question collection
   api.get('/question', question_routes.getquestions);
 
+  //get the questions posted by special user
+  api.get('/question/userquestions/', question_routes.getuserquestions);
+
+  api.get('/question/questionset/',question_routes.getquestionSet);
+
   //retrive one question based on _id
   api.get('/question/:id', question_routes.getquestion);
 
   //update the question content
   api.put('/question/:id', question_routes.updatequestion);
 
-  //delete a question
+  //delete a question 
   api.delete('/question/:id', question_routes.deletequestion);
 
 
-  //get the questions posted by special user
-  api.get('/question/userquestions', question_routes.getuserquestions);
 
 
   //get username of the
-  api.get('/user/username/:id', user_routes.getUsername1());
+  api.get('/user/username/:id', user_routes.getUsername1);
 
   //get username based on email
   api.get('/user/usernamebyemail/:email', user_routes.getUsername2);
@@ -109,12 +116,16 @@ module.exports = function (app, express) {
   api.get('/adminNotification/nodemailer', mailservice.sendmail_opt);
 
   //send mails using nodemailer + sendgrid
-  api.get('/adminNotification/sendgrid', mailservice.send_emails);
-
-
+  api.post('/adminNotification/sendgrid', mailservice.send_emails);
+  
   //get most recent 30 admin notifications
   api.get('/adminNotification', admin_notification_routes.getAdminNotifications);
 
+  //update status of user requests
+  api.put('/adminNotification/status',admin_notification_routes.updateNotificationStatus);
+
+  //update the view status of user requests
+  api.put('/adminNotification/viewstatus',admin_notification_routes.updateViewStatus)
 
   //search questions using question tags, question type and question content
   api.post('/question/qsearch', question_routes.searhQuestions);

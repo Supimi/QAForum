@@ -1,8 +1,48 @@
-<div class="card">
-  <h3>Quick Search Questions using QSearch</h3>
-    <form action="" method="POST">
-        <div class="custom-search">
-          <input type="text" class="form-control" placeholder="search...">
+<div class="container">
+  <div class="search-title" id="search-title">
+    Search your questions
+  </div>
+  <div class="custom-search">
+    <form [formGroup]="searchForm" method="post" action="" (ngSubmit)="search(searchForm.value)">
+      <input (focus)="keyPressed() " (blur)="keyReleased()" type="text" class="form-control" id="search_txt" name="search_txt"
+        formControlName="search_txt" placeholder="search...">
+      <!-- Modal -->
+      <div id="resultModal" class="modal" role="dialog" id="resultModal">
+        <div class="modal-dialog modal-lg">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+
+            <div class="modal-body">
+
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Question</th>
+                    <th>Type</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let q of search_results">
+                  <tr>
+                    <td>{{q.question_content}}</td>
+                    <td>{{q.type}}</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <!--div *ngFor="let q of search_results" class="well">
+                {{q.question_content}}
+                <p> on type {{q.type}}</p>
+              </div-->
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="close" data-dismiss="modal" (click)="close()">&times;</button>
+            </div>
+          </div>
+
         </div>
-      </form>
+      </div>
+    </form>
+  </div>
 </div>

@@ -1,6 +1,13 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,700);
 
-
+.outercontainer{
+    overflow: hidden;
+    position: relative;
+}
+.container{
+    width: 90%;
+    padding: 2px 2px 2px 2px;
+}
 .panel-google-plus {
     position: relative;
     border-radius: 0px;

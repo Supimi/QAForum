@@ -38,12 +38,12 @@ export class PostlistComponent implements OnInit {
     );
   }
 
-  userPosted(u) {
-    if (u == null) {
+  userPosted(anonymous,user) {
+    if (anonymous== true) {
       return 'Unknown user';
     }
     else {
-      return u;
+      return user;
     }
   }
 

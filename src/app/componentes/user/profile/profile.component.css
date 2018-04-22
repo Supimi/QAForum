@@ -1,22 +1,37 @@
 
-.navbar-login {
+.navbar-user {
   width: 305px;
   padding: 10px;
   padding-bottom: 0px;
+  
 }
 
-.navbar-login-session {
+.navbar a {
+  color: white;
+}
+
+.nav.navbar-nav.navbar-right li a {
+  color:black;
+}
+
+.navbar-user-session {
   padding: 10px;
   padding-bottom: 0px;
   padding-top: 0px;
+}
+.nav-notifications{
+  width: 500px;
+  padding: 10px;
+  padding-bottom: 0px;
 }
 
 .icon-size {
   font-size: 87px;
 }
 
-.navbar {
+.navbar-custom {
   background-color: #3e404c;
+  padding-bottom: 0px;
 }
 
 .navbar-addquestion{
@@ -41,14 +56,7 @@
   margin-top: 100px;
 }
 
-
-.containter-fluid scrollable{
-  padding-top:100px;
-  height: 100%;
-  overflow: auto;
-}
-
-.navbar-header a{
+.navbar-header .navbar-brand{
   color: white;
 }
 
@@ -56,6 +64,41 @@
   color:lightgoldenrodyellow;
 }
 
-.collapse #home, .collapse #history{
+.nav .navbar-nav #home a, .nav .navbar-nav #history a{
   color: wheat;
+}
+.navbar-custom .navbar-nav  li {
+  padding: 0px 2px 0px 2px;
+}
+.navbar-custom .navbar-nav > li > a:hover,
+.navbar-custom .navbar-nav > li > a:focus {
+    background-color:#09092a;
+}
+
+.navbar-custom .navbar-toggle {
+  border-color:#09092a;
+}
+
+.navbar-custom .navbar-toggle:hover,
+.navbar-custom .navbar-toggle:focus {
+    background-color:#09092a;
+}
+.navbar-custom .navbar-toggle .icon-bar {
+  background-color: #FFF;
+}
+
+.navbar-custom  .navbar-nav .open .dropdown-menu>li>a, .navbar-custom  .navbar-nav .open .dropdown-menu {
+  background-color:  #FFF;
+  color:black;
+}
+
+.badge{
+  position: absolute;
+  top:5px;
+  left:22px;
+  background-color: tomato;
+}
+
+.dropdown-menu{
+  background-color: white;
 }
