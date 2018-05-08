@@ -44,7 +44,7 @@ server.listen(config.port, function (err) {
     console.log(err);
   }
   else {
-    console.log('app is listing on port 3000');
+    console.log('app is listing on port'.concat(config.port));
   }
 }
 );
