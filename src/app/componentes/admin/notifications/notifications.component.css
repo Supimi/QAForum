@@ -1,0 +1,154 @@
+/*    --------------------------------------------------
+	:: General
+	-------------------------------------------------- */
+    body {
+        font-family: 'Open Sans', sans-serif;
+        color: #353535;
+    }
+    .content h1 {
+        text-align: center;
+    }
+    .content .content-footer p {
+        color: #6d6d6d;
+        font-size: 12px;
+        text-align: center;
+    }
+    .content .content-footer p a {
+        color: inherit;
+        font-weight: bold;
+    }
+    
+    /*	--------------------------------------------------
+        :: Table Filter
+        -------------------------------------------------- */
+    .panel {
+        border: 2px solid #ddd;
+        background-color: #fcfcfc;
+    }
+    .panel .btn-group {
+        margin: 15px 0 30px;
+    }
+    .panel .btn-group .btn {
+        transition: background-color .3s ease;
+    }
+    .table{
+        background-color: #fff;
+        border-bottom: 1px solid #eee;
+        table-layout: fixed;
+    }
+    .table tbody tr:hover {
+        cursor: pointer;
+        background-color: #eee;
+    }
+    .table tbody tr td {
+        padding: 10px;
+        vertical-align: middle;
+        border-top-color: #eee;
+    }
+    .table tbody tr.selected td {
+        background-color: #eee;
+    }
+    
+    .table .media-photo {
+        width: 35px;
+    }
+    .table-filter .media-meta {
+        font-size: 11px;
+        color: #999;
+    }
+    
+    .table .title {
+        color: #5cb85c;
+        font-size: 10px;
+        font-weight: bold;
+        line-height: normal;
+        margin: 0;
+    }
+    .table-filter .media .title span {
+        font-size: .8em;
+        margin-right: 20px;
+    }
+   
+    .table .title span.Alumni {
+        color: #f0ad4e;
+        min-width: 15%;
+    }
+    
+    .table .summary {
+        font-size: 14px;
+    }
+
+    .not-found{
+        text-align: center;
+    }
+
+    .dropdown-menu{
+        padding-top: 0;
+        font-family: sans-serif;
+        font-weight: 20px;
+    }
+
+    .user-photo{
+        width: 8%;
+    }
+    .options{
+        width: 5%;
+    }
+
+    .user-request{
+        width: 57%;
+    }
+    .user-type{
+        width: 15%;
+        max-width: 150px;
+        min-width: 150px;
+    }
+    
+    .date{
+        width: 15%;
+
+    }
+    
+
+    
+    .accept a{
+        color: green;
+    }
+    .reject a{
+        color: red;
+    }
+
+   .selecteduser{
+       display: none;
+       background-color: #fcfcfc;
+       padding: 0;
+       border-radius: 0%;
+       border: #6d6d6d;
+   }
+   .panel-heading{
+       background-color: #6d6d6d;
+   }
+
+   ul li{
+       list-style: none;
+   }
+
+   ul .buttons{
+       float: right;
+   }
+  
+    ul li button{
+        padding: 5px;
+    }
+
+    .user-img{
+        width: 30%;
+        float: left;
+        padding:25px;
+    }
+
+    .user-details{
+        width: 70%;
+        float: right;
+        padding:8px;
+    }

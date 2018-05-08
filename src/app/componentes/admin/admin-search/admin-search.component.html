@@ -1,0 +1,104 @@
+<div class="body">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div *ngIf="resultsLoaded | async">
+        <table class="table table-hover">
+          <div *ngIf="collection=='Questions';then questions else users"></div>
+          <ng-template #questions>
+            <tbody class="questions">
+              <tr *ngFor="let q of searchresults">
+                <td class="col-1">
+                  <div *ngIf="q.type=='Academic Subject'">
+                    <img src="../../../../assets/img/que_aca.png" alt="" class="qtype_img">
+                  </div>
+                  <div *ngIf="q.type=='Event Organization'">
+                    <img src="../../../../assets/img/que_even.png" alt="" class="qtype_img">
+                  </div>
+                  <div *ngIf="q.type=='Industry and Internship'">
+                    <img src="../../../../assets/img/que_ind.png" alt="" class="qtype_img">
+                  </div>
+                  <div *ngIf="q.type=='Postgraduate Studies'">
+                    <img src="../../../../assets/img/que_postgrad.png" alt="" class="qtype_img">
+                  </div>
+                  <div *ngIf="q.type=='Researches'">
+                    <img src="../../../../assets/img/que_res.png" alt="" class="qtype_img">
+                  </div>
+                  <div *ngIf="q.type=='Other'">
+                    <img src="../../../../assets/img/que_other.png" alt="" class="qtype_img">
+                  </div>
+                </td>
+                <td class="col-2">{{q.question_content}}</td>
+                <td class="col-3">
+                  <div *ngIf="q.type=='Academic Subject'">
+                    <div class="blackcoloured">
+                      {{q.type}}
+                    </div>
+                  </div>
+                  <div *ngIf="q.type=='Event Organization'">
+                    <div class="redcoloured">
+                      {{q.type}}
+                    </div>
+                  </div>
+                  <div *ngIf="q.type=='Industry and Internship'">
+                    <div class="greencoloured">
+                      {{q.type}}
+                    </div>
+                  </div>
+                  <div *ngIf="q.type=='Postgraduate Studies'">
+                    <div class="purplecoloured">
+                      {{q.type}}
+                    </div>
+                  </div>
+                  <div *ngIf="q.type=='Researches'">
+                    <div class="yellowcoloured">
+                      {{q.type}}
+                    </div>
+                  </div>
+                  <div *ngIf="q.type=='Other'">
+                    <div class="bluecoloured">
+                      {{q.type}}
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </ng-template>
+
+          <ng-template #users>
+            <tbody class="users">
+              <tr *ngFor="let u of searchresults">
+                <td class="col-1">
+                  <div *ngIf="u.usertype=='Academic Staff Member'">
+                    <img src="../../../../assets/img/cseasm.png" alt="" width="20px" height="20px">
+                  </div>
+                  <div *ngIf="u.usertype=='Student'">
+                    <img src="../../../../assets/img/csestudent.png" alt="" width="20px" height="20px">
+                  </div>
+                  <div *ngIf="u.usertype=='Alumni'">
+                    <img src="../../../../assets//img/csealumni.png" alt="" width="20px" height="20px">
+                  </div>
+                  <div *ngIf="u.usertype=='Admin'">
+                    <img src="../../../../assets/img/admin.png" alt="" width="20px" height="20px">
+                  </div>
+                </td>
+                <td class="col-2">{{u.firstname}} {{u.lastname}}</td>
+                <td class="col-3"> ({{u.email}})</td>
+                <td class="col-4">{{u.usertype}}</td>
+              </tr>
+            </tbody>
+          </ng-template>
+        </table>
+        <div *ngIf="searchresults.length==0">
+          <h4>No matches found for your search on "
+            <b>{{collection}}</b>"</h4>
+          <h5>Suggetions:</h5>
+          <ul>
+            <li>Try fewer keywords.</li>
+            <li>Try different keywords.</li>
+            <li>Try more general keywords.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

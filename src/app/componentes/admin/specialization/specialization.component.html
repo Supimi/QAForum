@@ -1,0 +1,63 @@
+<div class="content">
+  <div class="col-md-12 col-sm-12 col-xs-12 gutter">
+    <table class="table table-hover container">
+      <thead>
+        <tr>
+          <th>Module Code</th>
+          <th>Module Name</th>
+          <th>Semester</th>
+          <th>Stream</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let s of specializations| paginate: { itemsPerPage: 10, currentPage: p } ; let i=index">
+        <tr>
+          <td>{{s.module_code}}</td>
+          <td>{{s.module_name}}</td>
+          <td>{{s.semester}}</td>
+          <td>{{s.stream}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="paginate-container">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+    <div class="newspecilization">
+      <a class="add-specilization" data-toggle="modal" data-target="#add_specilization">
+        <img src="../../../../assets/img/addspec.png" alt="">
+      </a>
+    </div>
+  </div>
+  <!-- Modal -->
+  <div id="add_specilization" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" (click)="close()">×</button>
+          <h4 class="modal-title">New Specilization</h4>
+        </div>
+        <form [formGroup]="addspecializationForm" method="post" action="" (ngSubmit)="addSpecialization(addspecializationForm.value)">
+          <div class="modal-body">
+            <input type="text" placeholder="Module Code" name="module_code" formControlName="module_code">
+            <input type="text" placeholder="Module Name" name="module_name" formControlName="module_name">
+            <input type="number" placeholder="Semester" name="semester" min=1 max=8 formControlName="semester">
+            <select name="stream" placeholder="Stream" id="stream" formControlName="stream">
+              <option value="CSE">CSE</option>
+              <option value="ICE">ICE</option>
+              <option value="CSE & ICE">CSE & ICE</option>
+            </select>
+            <div class=message id="message">
+              <p>{{message}}</p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="cancel" data-dismiss="modal" (click)="close()">Close</button>
+            <button type="submit" class="add-specilizationbtn">Save</button>
+          </div>
+        </form>
+      </div>
+
+
+    </div>
+  </div>
+</div>

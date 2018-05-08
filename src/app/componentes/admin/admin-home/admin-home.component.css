@@ -1,0 +1,86 @@
+.admin-home{
+    padding: 20px;
+}
+.admin-home h1 {
+    color: #0e1a35;
+    font-size: 30px;
+    font-weight: 500;
+    margin: 0;
+    padding: 21px 0;
+}
+.questions {
+    background: #ffffff none repeat scroll 0 0;
+    border: 1px solid #d4d9e3;
+    display: inline-block;
+    padding: 15px;
+    width: 100%;
+}
+.questions select {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: 1px solid #dadee7;
+    border-radius: 100px;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    padding-right: 32px;
+    color: #0e1a35;
+}
+
+.questions select::before {
+    content: "";
+    font-family: sans-serif;
+    position: absolute;
+    right: 12px;
+    top: 11px;
+}
+
+.questions select option{
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+.questions  .btn-group {
+    float: right;
+}
+.questions h2 {
+    color: #8492af;
+    float: left;
+    font-size: 21px;
+    font-weight: 600;
+    margin: 0;
+    padding: 9px 0 0;
+}
+.btn.btn-secondary.btn-lg.dropdown-toggle > span {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+.questions .dropdown-menu{
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    border-radius: 8px;
+    width: 100%;
+    color: #0e1a35;
+}
+.questions .btn-group.open .dropdown-toggle, .btn.active, .btn:active{
+    box-shadow: none;
+}
+.questions .dropdown-menu > a {
+    color: #0e1a35;
+    display: inline-block;
+    font-weight: 800;
+    padding: 9px 0;
+    text-align: center;
+    width: 100%;
+}
+
+.table{
+    background-color: #f4f4ff;
+    font-family: sans-serif;
+    padding: 20px;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: #a3c2c2;
+  }
+
+

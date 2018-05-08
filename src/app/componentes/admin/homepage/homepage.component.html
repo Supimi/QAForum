@@ -1,0 +1,73 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1"
+  crossorigin="anonymous">
+<div *ngIf="filtersLoaded | async">
+  <div class="body">
+    <div class="header-top">
+      <app-navbar-admin [username]="user.username" [email]="user.email"></app-navbar-admin>
+    </div>
+    <div class="menu-bar v-align box">
+      <ul>
+        <li class="active">
+          <a href="admin/home">
+            <i class="fa fa-home"></i>
+            <span class="hidden-xs hidden-sm">Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="admin/specialization">
+            <i class="fa fa-bar-chart"></i>
+            <span class="hidden-xs hidden-sm">Specializations</span>
+          </a>
+        </li>
+        <li>
+          <a href="admin/users">
+            <i class="fa fa-user"></i>
+            <span class="hidden-xs hidden-sm">Users</span>
+          </a>
+        </li>
+        <li>
+          <a href="admin/notification">
+            <i class="fa fa-bell"></i>
+            <span class="hidden-xs hidden-sm">Notifications</span>
+          </a>
+        </li>
+        <li>
+          <a href="admin/settings">
+            <i class="fa fa-cog"></i>
+            <span class="hidden-xs hidden-sm">Setting</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+
+    <div class="content">
+      <div class="header">
+
+        <div class="search">
+          <form [formGroup]="searchForm" action="" method="post" (ngSubmit)=" setCriteria(searchForm.value)">
+            <div class="input-group">
+              <input type="text" placeholder="Search" id="search" formControlName="searchtxt">
+              <span class="input-group-addon">
+                <div *ngIf="searchCriteria=='Questions'">
+                  <i class="fa fa-commenting fa-2x"></i>
+                </div>
+                <div *ngIf="searchCriteria=='Users'">
+                  <i class="fa fa-user fa-2x"></i>
+                </div>
+                <a (click)="selectCriteria()">
+                  <i class="fa fa-angle-double-down"></i>
+                </a>
+              </span>
+            </div>
+          </form>
+        </div>
+
+      </div>
+      <div class="user-dashboard">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+
+  </div>
+</div>

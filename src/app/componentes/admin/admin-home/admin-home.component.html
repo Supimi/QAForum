@@ -1,0 +1,58 @@
+<div class="admin-home">
+  <form [formGroup]="questionsForm" method="post" action="" (ngSubmit)="getQuestions(questionsForm.value)">
+    <div class="col-md-7 col-sm-7 col-xs-12 gutter">
+      <div class="questions">
+        <h2>Question Category</h2>
+        <div class="btn-group">
+          <select class="btn btn-secondary btn-lg dropdown-toggle" name="type" placeholder="Select the question type" formControlName="type"
+            id="type">
+            <option value="Academic Subject" selected>Academic subject </option>
+            <option value="Event Organization">Event Organization</option>
+            <option value="Industry and Internship">Industry and internship</option>
+            <option value="Postgraduate Studies">Postgraduate Studies</option>
+            <option value="Researches">Researches</option>
+            <option value="Other" selected>Other</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-5 col-sm-5 col-xs-12 gutter">
+      <div class="questions">
+        <h2>Duration</h2>
+        <div class="btn-group">
+          <select class="btn btn-secondary btn-lg dropdown-toggle" name="type" placeholder="Select the question type" formControlName="duration"
+            id="type">
+            <span>Select the Duration</span>
+            <option value="Today" selected>Today </option>
+            <option value="Yesterday">Yesterday</option>
+            <option value="Last Week">Last Week</option>
+            <option value="Last Month">Last Month</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+  </form>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Question</th>
+        <th>Type</th>
+        <th>Date</th>
+        <th>User</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let q of questions">
+      <tr>
+        <td>{{q.question_content}}</td>
+        <td>{{q.type}}</td>
+        <td>{{q.date_posted|date}}</td>
+        <td>{{displayUserPosted(q.anonymous,q.user_posted)}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+</div>

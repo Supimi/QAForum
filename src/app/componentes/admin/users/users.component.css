@@ -1,0 +1,139 @@
+.body{
+    padding-top: 10px;
+}
+
+.pannel-title{
+    text-align: center;
+}
+
+.table{
+    font-family: sans-serif;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+tr{
+    border: 1px solid #d4d9e3; 
+    text-align: center;
+    align-content: center;
+}
+
+tr th,tr td{
+    text-align: center;
+    padding: 5px;
+}
+
+thead{
+    background-color: #e8e8e8;
+}
+tr{
+    padding:2px;
+}
+
+.add-user {
+    background: #5584ff none repeat scroll 0 0;
+    border-radius: 100%;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+}
+
+/*model-styles*/
+.add-user::before {
+    /*background: rgba(0, 0, 0, 0) url("../images/plus.png") no-repeat scroll 0 0;*/
+    content: "";
+    height: 12px;
+    left: 17px;
+    position: absolute;
+    top: 12px;
+    width: 12px;
+}
+
+
+.modal-content{
+    width: 100%;
+    
+}
+
+.modal-body input {
+    border: 1px solid #d4d9e3;
+    font-size: 14px;
+    margin: 5px 0;
+    padding: 14px 10px;
+    width: 70%;
+    color: #8492af;
+    /*float: right;*/
+    height: 25px;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+.modal-body select{
+    border: 1px solid #d4d9e3;
+    font-size: 14px;
+    margin: 5px 0; 
+    padding: 14px 10px;
+    width: 70%;
+    color: #8492af;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+.modal-body label{
+    font-family:sans-serif;
+    font-size:medium;
+    color: #333;
+    height: 25px;
+    width: 20%;
+    margin-top: 5px;
+    margin-left: 10px;
+    text-align: right;
+    margin-right:15px;
+    float:left;
+}
+
+.modal-footer .add-userbtn{
+    background: #5584ff none repeat scroll 0 0;
+    border: medium none;
+    border-radius: 100px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 30px;
+    position: relative;
+}
+.modal-footer .add-user::before{display: none;}
+.modal-footer {
+    border: 0 none;
+    padding: 10px 15px 26px;
+    text-align: right;
+    width: 100%;
+}
+.cancel {
+    background: #0E1A35     ;
+    border: medium none;
+    border-radius: 100px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 30px;
+    position: relative;
+    
+}
+.modal{
+    top: 20%; 
+}
+.modal-header .close {
+    margin-top: 2px;
+    color: lightblue;
+}
+
+.modal-header {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #0e1a35; 
+    color: #ffffff;
+}
+

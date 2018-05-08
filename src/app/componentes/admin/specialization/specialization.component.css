@@ -1,0 +1,133 @@
+.content{
+    padding-top: 20px;
+}
+.container{
+    background: #ffffff none repeat scroll 0 0;
+    border: 1px solid #d4d9e3;   
+    padding: 15px;
+}
+
+.table{
+    font-family: sans-serif;
+    padding: 20px;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: #e6ecf7;
+  }
+
+tbody{
+    border: 1px solid #d4d9e3; 
+}
+
+thead{
+    background-color: #e8e8e8;
+}
+tr{
+    padding:2px;
+}
+
+tr a{
+    text-align: center;
+}
+
+.paginate-container pagination-controls{
+    margin: 0 auto;
+}
+
+
+.add-specilization {
+    background: #5584ff none repeat scroll 0 0;
+    border-radius: 100%;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+}
+
+/*model-styles*/
+.add-specilization::before {
+    /*background: rgba(0, 0, 0, 0) url("../images/plus.png") no-repeat scroll 0 0;*/
+    content: "";
+    height: 12px;
+    left: 17px;
+    position: absolute;
+    top: 12px;
+    width: 12px;
+}
+
+.modal-content{
+    width: 100%;
+    
+}
+.modal-body form {
+    background-image: url("../../../../assets/img/speci.png");
+ }
+.modal-body input,.modal-body select {
+    border: 1px solid #d4d9e3;
+    font-size: 14px;
+    font-weight: 300;
+    margin: 5px 0;
+    padding: 14px 10px;
+    width: 100%;
+    color: #8492af;
+}
+
+.modal-footer .add-specilizationbtn{
+    background: #5584ff none repeat scroll 0 0;
+    border: medium none;
+    border-radius: 100px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 30px;
+    position: relative;
+}
+.modal-footer .add-specilization::before{display: none;}
+.modal-footer {
+    border: 0 none;
+    padding: 10px 15px 26px;
+    text-align: right;
+    width: 100%;
+}
+.cancel {
+    background: #0E1A35     ;
+    border: medium none;
+    border-radius: 100px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 30px;
+    position: relative;
+    
+}
+.modal{
+    top: 20%; 
+}
+.modal-header .close {
+    margin-top: 2px;
+    color: lightblue;
+}
+.search input:focus{
+    border-bottom: 1px solid #BDC4D4;
+    line-height:22px;
+    transition: 0.1s all;
+}
+.modal-header {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.modal-header{
+    background-color: #0e1a35; 
+    color: #ffffff;
+}
+.message{
+   padding-top: 10px;
+   font-family: Helvetica;
+   font-size: medium;
+   font-weight: bolder;
+}
+
