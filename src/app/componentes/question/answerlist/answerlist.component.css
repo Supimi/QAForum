@@ -1,11 +1,30 @@
+
 ul li{
     list-style-type: none;
 }
 .container{
     padding-top: 5px;
     padding-bottom: 10px;
+   
 }
-
+.row{
+    display: flex;
+    border-bottom: navy;
+}
+.answers{
+  font-family: sans-serif;
+}
 form{
     padding-top: 20px;
 }
+#content-left{
+    width: 10%;
+    background-color: #FBDDE7;
+    text-align-last: center;
+}
+#content-right{
+    width: 90%;
+    background-color: #F2F5FB;
+}
+hr { color: gray; border-style: inset; border-width: 1px; margin: 0.5em auto; }
+

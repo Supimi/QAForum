@@ -7,16 +7,17 @@ import { QuestionsupportService } from '../../services/questionsupport.service';
   styleUrls: ['./question.component.css']
 })
 export class QuestionComponent implements OnInit {
-  
+
   authToken: string;
   q_id: string;
   q_content: string;
   tags: string;
-  type:string;
+  type: string;
   user_posted: string;
   date_posted: string;
-  user:string;
-  anonymous:boolean;
+  user: string;
+  anonymous: boolean;
+  rate: number = 3;
 
   constructor(private _questionsupportService: QuestionsupportService) {
     // Retrieve the object from localStorage
@@ -24,30 +25,30 @@ export class QuestionComponent implements OnInit {
 
     // console.log retrieved item
     var user = JSON.parse(userObject);
-
+    console.log(user,"--------->userdetails");
     this.authToken = user.token;
     this.user = user.email;
-    this.q_id = this._questionsupportService.getQid();
-    this.getDetails(this.authToken,this.q_id);
+    this.q_id = this._questionsupportService.getQid() || user.q_id;
+    this.getDetails(this.authToken, this.q_id);
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
-  getDetails(token,id){
+  getDetails(token, id) {
     this._questionsupportService.getQuestion(token, id).subscribe(res => {
       this.q_content = res.question_content;
-      this.tags= res.tags;
-      this.type=res.type;
-      this.user_posted=res.user_posted;
-      this.anonymous=res.anonymous;
-      if(this.anonymous){
-        this.date_posted=null;
+      this.tags = res.tags;
+      this.type = res.type;
+      this.user_posted = res.user_posted;
+      this.anonymous = res.anonymous;
+      if (this.anonymous) {
+        this.date_posted = null;
       }
-      else{
-        this.date_posted=res.date_posted;
+      else {
+        this.date_posted = res.date_posted;
       }
 
-      console.log( this.q_content, res.question_content);
+      console.log(this.q_content, res.question_content);
     },
       error => {
         console.log('cannot fetch the question content');
@@ -56,5 +57,9 @@ export class QuestionComponent implements OnInit {
     );
   }
 
-  
+  Rate(){
+    console.log("Rating")
+  }
+
+
 }

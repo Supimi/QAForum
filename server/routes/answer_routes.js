@@ -6,7 +6,7 @@ function addAnswer(req, res) {
         answer_content: req.body.ans_content,
         user_posted: req.body.user,
         date_posted: new Date(),
-        ratings: 0
+        total_ratings: 0
     });
 
     answer.save(function (err) {
@@ -26,7 +26,7 @@ function addAnswer(req, res) {
 function getQuestionAnswers(req, res) {
     Answer.find({
         refered_question: req.params.ref_question
-    }).exec(function (err, answers) {
+    }).sort({total_ratings:-1}).exec(function (err, answers) {
         if (err) {
             console.log('answers cannot fetch');
             res.send({
@@ -37,7 +37,7 @@ function getQuestionAnswers(req, res) {
 
         if (!answers) {
             res.send({
-                success: false,
+                success: true,
                 message: "Answers does not exists."
             });
         } else if (answers) {
@@ -51,8 +51,8 @@ function updateAnswer(req, res) {
     Answer.findByIdAndUpdate(
         req.params.id, {
             $set: {
-                answer_content:req.body.ans_content,
-                date_posted:req.body.date_posted
+                answer_content: req.body.ans_content,
+                date_posted: req.body.date_posted
             }
         }, { new: true }, function (err, ans) {
             if (err) return handleError(err);
@@ -61,12 +61,12 @@ function updateAnswer(req, res) {
 }
 
 
-//update ratins of the answer
-function updateRatings(req, res) {
+//update ratings of the answer
+function updateTotalRatings(req, res) {
     Answer.findByIdAndUpdate(
         req.params.id, {
-            $set: {
-                ratings: req.body.ratings
+            $inc: {
+                total_ratings: req.body.ratings
             }
         }, { new: true }, function (err, ans) {
             if (err) return handleError(err);
@@ -77,29 +77,30 @@ function updateRatings(req, res) {
 //delete all answers relevent to a question
 function deleteQuestionAnswers(req, res) {
     Answer.remove({ refered_question: req.params.ref_question }, function (err, ans) {
-      if (err) {
-        res.status(500).send(err);
-      } else {
-        const response = {
-          message: "answers of refered to question are successfully deleted",
-          id: req.params.id
-        };
-        return res.status(200).send(response);
-      }
+        if (err) {
+            res.status(500).send(err);
+        } else {
+            const response = {
+                message: "answers of refered to question are successfully deleted",
+                id: req.params.id
+            };
+            return res.status(200).send(response);
+        }
     });
-  }
+}
+//add a rating object id into 
 
-  function deleteAnswer(req, res) {
+function deleteAnswer(req, res) {
     Answer.findByIdAndRemove(req.params.id, function (err, ans) {
-      if (err) {
-        res.status(500).send(err);
-      } else {
-        const response = {
-          message: "answer successfully deleted",
-          id: req.params.id
-        };
-        return res.status(200).send(response);
-      }
+        if (err) {
+            res.status(500).send(err);
+        } else {
+            const response = {
+                message: "answer successfully deleted",
+                id: req.params.id
+            };
+            return res.status(200).send(response);
+        }
     });
-  }
-module.exports = { addAnswer, getQuestionAnswers,updateAnswer,updateRatings,deleteQuestionAnswers, deleteAnswer };
+}
+module.exports = { addAnswer, getQuestionAnswers, updateAnswer, updateTotalRatings, deleteQuestionAnswers, deleteAnswer };

@@ -35,7 +35,7 @@ export class SigninComponent implements OnInit {
         console.log(res);
         if (res.success) {
           this.message = 'Login Successful';
-          var userObject = { 'token': res.token, 'email': post.email };
+          var userObject = { 'token': res.token, 'email': post.email, 'id': res.id };
 
           // Set localStorage item
           localStorage.setItem('userObject', JSON.stringify(userObject));

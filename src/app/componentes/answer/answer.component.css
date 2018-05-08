@@ -6,12 +6,57 @@
   }
 
 .rating_panelmain{
-  width: 50%;
-  float: left;
-  background-color: wheat;
+  width: 40%;
+  padding: 3px 0px 5px 20px;
 }
 
 
+.rating_panel{
+  display: none;
+  border:0.5px solid white;
+  border-radius: 5px;
+  padding:3px 25px 0px 25px;
+  background-color: white;
+}
+.comment_panelmain{
+  background-color: white;
+}
+.comment_panel{
+  display:none;
+  padding: 5px;
+}
+
+.rating_panel p{
+  width: 50%;
+  float: left;
+  font-family: sans-serif;
+}
+.rating_panel.rateObj{
+  width: 50%;
+  float: right;
+}
+form ul li{
+  display: inline;
+  padding-top: 0;
+  
+}
+
+form ul li button{
+  vertical-align:top;
+}
+
+.answer_content p{
+  word-wrap: break-word;
+  padding: 5px;
+}
+
+.right-controlers{
+  float: right;
+}
+
 ul{
   margin-left: 3%;
+}
+.list-inline{
+  padding: 5px 20px 3px 0px;
 }

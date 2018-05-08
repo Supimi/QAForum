@@ -1,6 +1,3 @@
-rating {
-    float:left;
-}
 
 .rating:not(:checked) > input {
     position:absolute;
@@ -17,7 +14,7 @@ rating {
     cursor:pointer;
     font-size:200%;
     line-height:1.2;
-    color:rgba(97, 92, 92, 0.082);
+    color:rgb(179, 177, 177);
 }
 
 .rating:not(:checked) > label:before {

@@ -1,1 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~ngx-bar-rating/themes/br-default-theme.css';
+@import '~ngx-bar-rating/themes/br-bootstrap-theme.css';
+@import '~ngx-bar-rating/themes/br-horizontal-theme.css';

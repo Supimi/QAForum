@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { QuestionsupportService } from '../../../services/questionsupport.service';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
@@ -13,17 +13,18 @@ export class AnswerlistComponent implements OnInit {
   q_id: string;
   user: string;
   answers: [string];
+ // @Output:rateclicked:
 
-  constructor(private _questionsupportService: QuestionsupportService, private _formBuilder: FormBuilder) { 
+  constructor(private _questionsupportService: QuestionsupportService, private _formBuilder: FormBuilder) {
     // Retrieve the object from localStorage
     var userObject = localStorage.getItem('userObject');
 
     // console.log retrieved item
-    var user = JSON.parse(userObject);
+    var userobj = JSON.parse(userObject);
 
-    this.authToken = user.token;
-    this.user = user.email;
-    this.q_id = this._questionsupportService.getQid();
+    this.authToken = userobj.token;
+    this.user = userobj.email;
+    this.q_id = this._questionsupportService.getQid() || userobj.q_id;
     this.getAnswers();
 
     this.addanswerForm = _formBuilder.group({

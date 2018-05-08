@@ -31,7 +31,7 @@ function adduser(req, res) {
         working_place: req.working_place
     });
 
-    user.save(function (err) {
+    user.save(function (err, user) {
         if (err) {
             res.send(err);
             return;
@@ -40,7 +40,7 @@ function adduser(req, res) {
             res.json({
                 success: true,
                 message: 'User has been created',
-                token: token
+                token: token,
             });
         }
     });
@@ -51,7 +51,7 @@ function checkuser(req, res) {
     User.findOne({
         email: req.body.email
     }, {
-            usertype: 1, password: 1
+            _id: 1, usertype: 1, password: 1
         }).exec(function (err, user) {
             if (err) throw err;
 
@@ -61,6 +61,7 @@ function checkuser(req, res) {
                     message: "User doesn't exist."
                 });
             } else if (user) {
+                console.log(user);
                 var validPassword = user.comparePassword(req.body.password);
 
                 if (!validPassword) {
@@ -76,6 +77,7 @@ function checkuser(req, res) {
                         success: true,
                         message: 'successfully login!',
                         token: token,
+                        id:user._id,
                         usertype: user.usertype
                     });
                 }

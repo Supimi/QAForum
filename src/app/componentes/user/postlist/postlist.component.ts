@@ -24,7 +24,7 @@ export class PostlistComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.date=new Date();
+    this.date = new Date();
   }
 
   getQuetions(authtoken) {
@@ -38,8 +38,8 @@ export class PostlistComponent implements OnInit {
     );
   }
 
-  userPosted(anonymous,user) {
-    if (anonymous== true) {
+  userPosted(anonymous, user) {
+    if (anonymous == true) {
       return 'Unknown user';
     }
     else {
@@ -48,12 +48,12 @@ export class PostlistComponent implements OnInit {
   }
 
   caltimePeriod(d) {
-    let n = Math.round(Math.abs(this.date.getTime()- new Date(d).getTime())/(3600*1000*24));
-    if (n==0){
-      return  Math.round(Math.abs(this.date.getTime()- new Date(d).getTime())/(3600*1000))+' hours'
+    let n = Math.round(Math.abs(this.date.getTime() - new Date(d).getTime()) / (3600 * 1000 * 24));
+    if (n == 0) {
+      return Math.round(Math.abs(this.date.getTime() - new Date(d).getTime()) / (3600 * 1000)) + ' hours';
     }
-    else{
-      return n+' days';
+    else {
+      return n + ' days';
     }
 
   }
@@ -62,8 +62,14 @@ export class PostlistComponent implements OnInit {
 
 
   directTo(route: string, q_id: string) {
-    this._questionsupportService.setQid(q_id);
-    this._router.navigateByUrl(`/${route}`);
+    var oldobj = JSON.parse(localStorage.getItem('userObject'));
+    var newObject = { 'token': oldobj.token, 'email': oldobj.email, 'id': oldobj.id, 'q_id': q_id }
+
+    //if (typeof oldobj !== 'undefined') {
+      localStorage.setItem('userObject', JSON.stringify(newObject));
+      this._questionsupportService.setQid(q_id);
+      this._router.navigateByUrl(`/${route}`);
+   // };
   }
 
 }

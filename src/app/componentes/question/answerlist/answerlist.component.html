@@ -1,15 +1,23 @@
-<div *ngFor = "let ans of answers">
-   <div class="container">
-      <app-answer [answer]="ans" [ansId]="ans._id"></app-answer>
-   </div>
+<div class="answers">
+  <div *ngFor="let ans of answers">
+    <div class="row">
+      <div class="col" id="content-left">
+        <span class="glyphicon glyphicon-star" style="color:#f70"></span>
+        <p>{{ans.total_ratings}} ratings</p>
+      </div>
+      <div class="col" id="content-right">
+        <app-answer [answer]="ans"></app-answer>
+      </div>
+    </div>
+  </div>
+  <form [formGroup]="addanswerForm" method="post" action="" (ngSubmit)="postAnswer(addanswerForm.value)">
+    <ul>
+      <li>
+        <textarea name="newanswer" id="newanswer" cols="100" rows="10" placeholder="Enter your answer." formControlName="newanswer"></textarea>
+      </li>
+      <li>
+        <button type="submit" class="btn btn-success">Add Answer</button>
+      </li>
+    </ul>
+  </form>
 </div>
-<form [formGroup]="addanswerForm" method="post" action="" (ngSubmit)="postAnswer(addanswerForm.value)">
-  <ul>
-    <li>
-      <textarea name="newanswer" id="newanswer" cols="100" rows="10" placeholder="Enter your answer." formControlName="newanswer"></textarea>
-    </li>
-    <li>
-      <button type="submit" class="btn btn-success">Add Answer</button>
-    </li>
-  </ul>
-</form>

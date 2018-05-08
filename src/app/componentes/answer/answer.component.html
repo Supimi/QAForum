@@ -1,6 +1,5 @@
 <div>
-  <hr>
-  <div class="container">
+  <div class="answer_content" [id]="ans_content">
     <p>{{answer.answer_content}}</p>
   </div>
   <ul class="list-inline list-unstyled">
@@ -9,22 +8,50 @@
         <i class="glyphicon glyphicon-calendar"></i>1 day</span>
     </li>
     <li>|</li>
-    <li>
+    <li (click)="comment()" *ngIf="fieldsLoaded | async">
       <span>
-        <i class="glyphicon glyphicon-comment"></i> 0 comments</span>
+        <i class="glyphicon glyphicon-comment"></i> {{comments.length}} comments</span>
     </li>
     <li>|</li>
     <li (click)='rate()'>
       <span>
         <i class="glyphicon glyphicon-thumbs-up"></i> Rate</span>
     </li>
-    <li>|</li>
+    <li class="right-controlers" *ngIf="answer.user_posted==email">|</li>
+    <li (click)="editAnswer()" *ngIf="answer.user_posted==email" class="right-controlers">
+      <span class="glyphicon glyphicon-pencil"> Edit</span>
+    </li>
+    <li class="right-controlers" *ngIf="answer.user_posted==email">|</li>
+    <li *ngIf="answer.user_posted==email" class="right-controlers">
+      <span class="glyphicon glyphicon-trash">  Delete</span>
+    </li>
   </ul>
   <div class="rating_panelmain">
-    <div [id]="rating_panel">
-      <app-rating [rating]=' ratingClicked' (ratingClick)='ratingComponetClick($event)'></app-rating>
+    <div [id]="rating_panel" class="rating_panel">
+      <p>Rate this answer:</p>
+      <app-rating [ansId]='answer._id' [rating]='ratingClicked' (ratingClick)='ratingComponetClick($event)' class="rateObj"></app-rating>
     </div>
-
+  </div>
+  <div class="comment_panelmain">
+    <div [id]="comment_panel" class="comment_panel">
+      <ul class="list-group">
+        <div *ngFor="let cmnt of comments">
+          <li class="list-group-item">{{cmnt.comment}}</li>
+        </div>
+      </ul>
+      <div class="addcomment">
+        <form [formGroup]="addcommentForm" method="post" (ngSubmit)="postComment(addcommentForm.value)">
+          <ul>
+            <li>
+              <textarea name="" id="" cols="80" rows="2" placeholder="Add your comment." formControlName="newcomment"></textarea>
+            </li>
+            <li>
+              <button type="submit" class="btn btn-warning">Add</button>
+            </li>
+          </ul>
+        </form>
+      </div>
+    </div>
   </div>
 
 </div>

@@ -6,7 +6,7 @@ var comment_routes = require('../routes/comment_routes');
 var specialization_routes = require('../routes/specialization_routes');
 var user_notification_routes = require('../routes/user_notification_routes');
 var non_aca_specilization_routes = require('../routes/non_aca_spec_routes');
-var Non_aca_Specilization = require('../models/non_aca_specilization');
+var rating_routes = require('../routes/rating_routes');
 var config = require('../config');
 var secretKey = config.secretKey;
 var jsonwebtoken = require('jsonwebtoken');
@@ -60,9 +60,9 @@ module.exports = function (app, express) {
   //delete a user from the system - only for admin
   api.delete('/user/:email', user_routes.deleteUser);
 
-  api.get('/user/search/adminsearch',user_routes.searchUsers);
+  api.get('/user/search/adminsearch', user_routes.searchUsers);
 
-  api.get('/user/count/usercount',user_routes.getUserCount);
+  api.get('/user/count/usercount', user_routes.getUserCount);
 
   api.post('/question', question_routes.postquestion);
 
@@ -77,7 +77,7 @@ module.exports = function (app, express) {
   //get the questions posted by special user
   api.get('/question/userquestions/', question_routes.getuserquestions);
 
-  api.get('/question/questionset/',question_routes.getquestionSet);
+  api.get('/question/questionset/', question_routes.getquestionSet);
 
   //retrive one question based on _id
   api.get('/question/:id', question_routes.getquestion);
@@ -104,7 +104,7 @@ module.exports = function (app, express) {
   api.put('/answer/:ref_question/:id', answer_routes.updateAnswer);
 
   //update ratings
-  api.put('/answer/:ref_question/:id/ratings', answer_routes.updateRatings);
+  api.put('/answer/:ref_question/:id/ratings', answer_routes.updateTotalRatings);
 
   //delete all answers refered to one question
   api.delete('/answer/:ref_question', answer_routes.deleteQuestionAnswers);
@@ -112,20 +112,29 @@ module.exports = function (app, express) {
   //find specific answer by its id and remove from the answer collection
   api.delete('/answer/:ref_question/:id', answer_routes.deleteAnswer);
 
+  //add new rating
+  api.post('/rating', rating_routes.addRating);
+
+  //update rating_level
+  api.put('/rating/:id', rating_routes.updateRating);
+
+  //get the ratings relevent to answer by a special user
+  api.get('/rating/:ans_id/:user_id',rating_routes.getRating);
+
   //send mals using node mailer
   api.get('/adminNotification/nodemailer', mailservice.sendmail_opt);
 
   //send mails using nodemailer + sendgrid
   api.post('/adminNotification/sendgrid', mailservice.send_emails);
-  
+
   //get most recent 30 admin notifications
   api.get('/adminNotification', admin_notification_routes.getAdminNotifications);
 
   //update status of user requests
-  api.put('/adminNotification/status',admin_notification_routes.updateNotificationStatus);
+  api.put('/adminNotification/status', admin_notification_routes.updateNotificationStatus);
 
   //update the view status of user requests
-  api.put('/adminNotification/viewstatus',admin_notification_routes.updateViewStatus)
+  api.put('/adminNotification/viewstatus', admin_notification_routes.updateViewStatus)
 
   //search questions using question tags, question type and question content
   api.post('/question/qsearch', question_routes.searhQuestions);
@@ -167,7 +176,7 @@ module.exports = function (app, express) {
   api.get('/userNotification/:user', user_notification_routes.getUserNotifications);
 
   //add new non-academic specilizations to the system -only by admin
-  api.post('/nonAcaSpec',non_aca_specilization_routes.addNonAcaSpec);
+  api.post('/nonAcaSpec', non_aca_specilization_routes.addNonAcaSpec);
 
   //add users to the non-aca-specili zations
   api.put('/nonAcaSpec/:id', non_aca_specilization_routes.updateNonAcaSpec);

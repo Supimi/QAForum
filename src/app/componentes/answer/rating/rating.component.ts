@@ -7,20 +7,20 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class RatingComponent implements OnInit {
 
-  constructor() { }
+  constructor() { } 
 
   @Input() rating: number;
-  @Input() itemId: number;
+  @Input() ansId: any;
   @Output() ratingClick: EventEmitter<any> = new EventEmitter<any>();
 
   inputsName: string;
   ngOnInit() {
-    this.inputsName = this.itemId + '_rating';
+    this.inputsName = this.ansId + '_rating';
   }
   onClick(rating: number): void {
     this.rating = rating;
     this.ratingClick.emit({
-      itemId: this.itemId,
+      itemId: this.ansId,
       rating: rating
     });
   }
