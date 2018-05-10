@@ -41,6 +41,7 @@ function adduser(req, res) {
                 success: true,
                 message: 'User has been created',
                 token: token,
+                id: user._id
             });
         }
     });
@@ -51,7 +52,7 @@ function checkuser(req, res) {
     User.findOne({
         email: req.body.email
     }, {
-            _id: 1, usertype: 1, password: 1
+            _id: 1, usertype: 1, password: 1, username: 1
         }).exec(function (err, user) {
             if (err) throw err;
 
@@ -77,8 +78,9 @@ function checkuser(req, res) {
                         success: true,
                         message: 'successfully login!',
                         token: token,
-                        id:user._id,
-                        usertype: user.usertype
+                        id: user._id,
+                        usertype: user.usertype,
+                        username: user.username
                     });
                 }
             }
@@ -129,10 +131,10 @@ function updateUser(req, res) {
             $set: {
                 firstname: req.body.firstname,
                 lastname: req.body.lastname,
-                username: req.body.username,
-                specialization: searchArray(req.body.specialization),
+                $push: { specialization: { $each: req.body.specialization } },
                 position: req.body.position,
-                working_place: req.body.working_place
+                working_place: req.body.working_place,
+                non_aca_specialization: req.body.non_spec
             }
         }, );
 }

@@ -21,7 +21,7 @@ export class QuestionsupportService {
 
   //get the details of a question based on its id
   getQuestion(token, id) {
-    return this._http.get('http://localhost:3000/api.qsolver.com/question/' + id, {
+    return this._http.get('/api.qsolver.com/question/' + id, {
       params: {
         token: token, id: id
       }
@@ -31,13 +31,13 @@ export class QuestionsupportService {
 
   //add new answers to the forum
   addAnswer(token, ref_question, ans_content, user) {
-    return this._http.post('http://localhost:3000/api.qsolver.com/answer', { 'token': token, 'ref_question': ref_question, 'ans_content': ans_content, 'user': user }).map(res => res.json());
+    return this._http.post('/api.qsolver.com/answer', { 'token': token, 'ref_question': ref_question, 'ans_content': ans_content, 'user': user }).map(res => res.json());
 
   }
 
   //get the answers which belongs to epecial question
   getAnswers(token, q_id) {
-    return this._http.get('http://localhost:3000/api.qsolver.com/answer/' + q_id, {
+    return this._http.get('/api.qsolver.com/answer/' + q_id, {
       params: {
         token: token, ref_question: q_id
       }
@@ -47,7 +47,7 @@ export class QuestionsupportService {
 
   updateTotalRatings(token, referred_question, ans_id, ratings) {
     console.log(token, referred_question, ans_id, ratings);
-    return this._http.put('http://localhost:3000/api.qsolver.com/answer/'.concat(referred_question).concat('/').concat(ans_id).concat('/ratings'), {
+    return this._http.put('/api.qsolver.com/answer/'.concat(referred_question).concat('/').concat(ans_id).concat('/ratings'), {
       token: token,
       ratings: ratings
     }).map(res => res.json());
@@ -55,7 +55,7 @@ export class QuestionsupportService {
   }
 
   getRating(token, ans_id, user_id) {
-    return this._http.get('http://localhost:3000/api.qsolver.com/rating/'.concat(ans_id).concat("/").concat(user_id), {
+    return this._http.get('/api.qsolver.com/rating/'.concat(ans_id).concat("/").concat(user_id), {
       params: {
         token: token
       }
@@ -63,7 +63,7 @@ export class QuestionsupportService {
   }
 
   rateAnswer(token, ans_id, user_id, rating_level) {
-    return this._http.post('http://localhost:3000/api.qsolver.com/rating', {
+    return this._http.post('/api.qsolver.com/rating', {
       token: token,
       ans_id: ans_id,
       user_id: user_id,
@@ -72,7 +72,7 @@ export class QuestionsupportService {
   }
 
   updateRatingLevel(token, ans_id, userid, rating_level) {
-    return this._http.put('http://localhost:3000/api.qsolver.com/rating/'.concat(ans_id), {
+    return this._http.put('/api.qsolver.com/rating/'.concat(ans_id), {
       token: token,
       ans_id: ans_id,
       userid: userid,
@@ -81,7 +81,7 @@ export class QuestionsupportService {
   }
 
   getComments(token, q_id, ans_id) {
-    return this._http.get("http://localhost:3000/api.qsolver.com/comment", {
+    return this._http.get("/api.qsolver.com/comment", {
       params: {
         token: token,
         ref_question: q_id,
@@ -91,7 +91,7 @@ export class QuestionsupportService {
   }
 
   addComment(token,ref_question, ref_answer, comment, user_posted) {
-    return this._http.post("http://localhost:3000/api.qsolver.com/comment", {
+    return this._http.post("/api.qsolver.com/comment", {
       token:token,
       ref_question: ref_question,
       ref_answer: ref_answer,

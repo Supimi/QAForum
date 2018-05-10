@@ -52,7 +52,7 @@ export class SignupStudentComponent implements OnInit {
       this._signupService.signup( post.firstname , post.lastname , post.username, this.usertype, post.email, post.password, null, post.index, null, null).subscribe(
         res => {
           console.log(res);
-          var userObject = { 'token': res.token, 'email': post.email };
+          var userObject = { 'id':res.id,'token': res.token, 'email': post.email, 'username':post.username, 'usertype':this.usertype };
   
           // Set localStorage item
           localStorage.setItem('userObject', JSON.stringify(userObject));

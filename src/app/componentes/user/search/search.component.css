@@ -53,7 +53,7 @@
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     overflow: auto; /* Enable scroll if needed */
-    width: 75%;
+    width: 100%;
     height: auto;
     float: left;
     padding-top: 130px;

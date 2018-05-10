@@ -15,9 +15,10 @@ export class SigninService {
 
   signin(email , password ) {
     console.log( console.log('from sign in'));
+    console.log("HElLO!");
     const headers = new Headers();
     headers.append('Content-Type', 'application/X-www-form=urlencoded' );
-    return this._http.post('http://localhost:3000/api.qsolver.com/user/login', { 'email': email ,'password' : password }).map(res=>res.json());
+    return this._http.post('/api.qsolver.com/user/login', { 'email': email ,'password' : password }).map(res=>res.json());
   }
   
 }

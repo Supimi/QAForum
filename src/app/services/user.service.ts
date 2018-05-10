@@ -16,14 +16,28 @@ export class UserService {
 
   //get the details of a speccific user using email
   getUser(email) {
-    return this._http.get('http://localhost:3000/api.qsolver.com/user/' + email).map(res => res.json());
+    return this._http.get('/api.qsolver.com/user/' + email).map(res => res.json());
   }
 
   getNotifications(email, token) {
-    return this._http.get('http://localhost:3000/api.qsolver.com/userNotification/'.concat(email), {
+    return this._http.get('/api.qsolver.com/userNotification/'.concat(email), {
       params: { token: token }
     }).map(res => res.json());
 
+  }
+
+  updateUser(id, email, token, firstname, lastname, specialization, position, working_place, non_spec) {
+    console.log(specialization);
+    return this._http.put('/api.qsolver.com/user/'.concat(email), {
+      token: token,
+      id: id,
+      firstname: firstname,
+      lastname: lastname,
+      specialization: specialization,
+      position: position,
+      working_place: working_place,
+      non_spec: non_spec
+    }).map(res => res.json());
   }
 
 
@@ -41,6 +55,14 @@ export class UserService {
 
   getEmail() {
     return this.email;
+  }
+
+  getSpecializations(token) {
+    console.log("from user services getSpectializations")
+    return this._http.get('/api.qsolver.com/specialization', {
+      params: { token: token }
+    }
+    ).map(res => res.json());
   }
 
 }

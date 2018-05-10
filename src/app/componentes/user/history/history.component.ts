@@ -12,8 +12,7 @@ import { Router } from '@angular/router';
 })
 export class HistoryComponent implements OnInit {
   questions: [string];
-  username:string;
-  date:Date;
+  date: Date;
 
   constructor(private _questionService: QuestionService, private _questionsupportService: QuestionsupportService, private _router: Router) {
     // Retrieve the object from localStorage
@@ -21,19 +20,18 @@ export class HistoryComponent implements OnInit {
 
     // console.log retrieved item
     var user = JSON.parse(userObject);
-    this.getUsername(user.token, user.email);
-    console.log(this.username);
-    this.getUserQuetions(user.token,this.username);
-    console.log('questions',this.questions);
+   
+    this.getUserQuetions(user.token, user.username);
+    console.log('questions', this.questions);
 
   }
 
   ngOnInit() {
-    this.date=new Date();
+    this.date = new Date();
   }
 
-  getUserQuetions(authtoken,username) {
-    this._questionService.getUserQuestions(authtoken,username).subscribe(ques => {
+  getUserQuetions(authtoken, username) {
+    this._questionService.getUserQuestions(authtoken, username).subscribe(ques => {
       this.questions = ques;
     },
       error => {
@@ -42,14 +40,10 @@ export class HistoryComponent implements OnInit {
     );
   }
 
-  getUsername(authtoken,email){
-    this._questionService.getUsername(authtoken,email).subscribe(res=>{
-      this.username=res.username;
-    });
-  }
+  
 
-  userPosted(anonymous,user) {
-    if (anonymous== true) {
+  userPosted(anonymous, user) {
+    if (anonymous == true) {
       return 'Unknown user';
     }
     else {
@@ -59,12 +53,12 @@ export class HistoryComponent implements OnInit {
 
 
   caltimePeriod(d) {
-    let n = Math.round(Math.abs(this.date.getTime()- new Date(d).getTime())/(3600*1000*24));
-    if (n==0){
-      return  Math.round(Math.abs(this.date.getTime()- new Date(d).getTime())/(3600*1000))+' hours'
+    let n = Math.round(Math.abs(this.date.getTime() - new Date(d).getTime()) / (3600 * 1000 * 24));
+    if (n == 0) {
+      return Math.round(Math.abs(this.date.getTime() - new Date(d).getTime()) / (3600 * 1000)) + ' hours'
     }
-    else{
-      return n+' days';
+    else {
+      return n + ' days';
     }
 
   }

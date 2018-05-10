@@ -40,6 +40,7 @@ import { AdminService } from './services/admin.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AdminSearchComponent } from './componentes/admin/admin-search/admin-search.component';
 import { BarRatingModule } from "ngx-bar-rating";
+import { UserProfileComponent } from './componentes/user/user-profile/user-profile.component';
 
 
 const appRoutes: Routes = [
@@ -64,7 +65,7 @@ const appRoutes: Routes = [
   {
     path: 'user',
     component: UserComponent,
-    children: [{ path: 'recent', component: PostlistComponent }, { path: 'history', component: HistoryComponent }]
+    children: [{ path: 'recent', component: PostlistComponent }, { path: 'history', component: HistoryComponent },  { path: 'userprofile', component: UserProfileComponent }]
   },
   {
     path: 'question',
@@ -112,7 +113,8 @@ const appRoutes: Routes = [
     NotificationsComponent,
     SettingsComponent,
     AdminHomeComponent,
-    AdminSearchComponent
+    AdminSearchComponent,
+    UserProfileComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

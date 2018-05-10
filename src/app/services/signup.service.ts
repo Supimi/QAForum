@@ -10,7 +10,7 @@ export class SignupService {
 
   signup(firstname, lastname, username , usertype, email,  password, specilization, index, position, working_place) {
     console.log('from sign up');
-    return this._http.post('http://localhost:3000/api.qsolver.com/user/signup', {
+    return this._http.post('/api.qsolver.com/user/signup', {
       'firstname': firstname , 
       'lastname' : lastname, 
       'username': username, 
@@ -26,7 +26,7 @@ export class SignupService {
 
   signupRequest(firstname, lastname, username , usertype, email, specilization, index, position,  working_place) {
     console.log('from sign up');
-    return this._http.post('http://localhost:3000/api.qsolver.com/adminNotification', {
+    return this._http.post('/api.qsolver.com/adminNotification', {
       'firstname': firstname , 
       'lastname' : lastname, 
       'username': username, 

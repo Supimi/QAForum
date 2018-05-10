@@ -25,7 +25,7 @@ function addSpecilization(req, res) {
 function getSpecilizations(req, res) {
     Specialization.find({}).sort({ semester: 1 }).exec(function (err, spec) {
         if (err) {
-            console.log("Error in retrieving specilizations");
+            console.log("Error in retrieving specializations");
             res.send(err);
         }
         else {

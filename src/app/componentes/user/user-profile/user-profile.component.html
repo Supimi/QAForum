@@ -1,0 +1,123 @@
+<div class="body">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="title">
+        <h3>User Profile ({{usertype}})</h3>
+      </div>
+      <div class="edit-btn">
+        <a (click)="activeEdit()">
+          <img src="../../../../assets/img/edit.png" alt="" title="Edit">
+        </a>
+      </div>
+
+      <img src="../../../../assets/img/user_2.png" alt="" class="center">
+
+
+      <form class="form-horizontal" role="form" [formGroup]="editForm" method="post" action="" (ngSubmit)="editDetails(editForm.value)">
+
+        <div class="form-group">
+          <div class="left-label">
+            <label for="firstname">First Name</label>
+          </div>
+          <div class="right-input">
+            <input type="text" class="form-control" id="firstname" name="firstname" [readonly]="edit" formControlName="firstname" [value]="firstname">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="left-label">
+            <label for="lastname">Last Name</label>
+          </div>
+          <div class="right-input">
+            <input type="text" class="form-control" id="lastname" name="lastname" [readonly]="edit" formControlName="lastname" [value]="lastname">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="left-label">
+            <label for="username">Username</label>
+          </div>
+          <div class="right-input">
+            <input type="text" class="form-control" id="username" name="username" readonly formControlName="username" [value]="username">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="left-label">
+            <label for="email">Email</label>
+          </div>
+          <div class="right-input">
+            <input type="text" class="form-control" id="email" name="email" readonly formControlName="email">
+          </div>
+
+        </div>
+
+        <div class="form-group" *ngIf="isStudent()">
+          <div class="left-label">
+            <label for="index">Index No.</label>
+          </div>
+          <div class="right-input">
+            <input type="text" class="form-control" id="index" name="index" formControlName="index" [value]="index" readonly>
+          </div>
+        </div>
+
+        <div class="form-group" *ngIf="isAcademicORAlumni()">
+          <div class="left-label">
+            <label for="position">Position</label>
+          </div>
+          <div class="right-input">
+            <input type="text" class="form-control" id="position" name="position" [readonly]="edit" formControlName="position" [value]="position">
+          </div>
+        </div>
+
+        <div class="form-group" *ngIf="isAlumni()">
+          <div class="left-label">
+            <label for="working_place">Working Place</label>
+          </div>
+          <div class="right-input">
+            <input type="text" class="form-control" id="working_place" name="working_place" [readonly]="edit" formControlName="working_place"
+              [value]="working_place">
+          </div>
+        </div>
+
+        <div class="form-group" *ngIf="isAcademic()">
+          <div class="left-label">
+            <label for="specializations">Specializations</label>
+          </div>
+          <div class="right-input">
+            <select name="spec_type" class="form-control" id="module" [disabled]="active">
+              <option *ngFor="let m of modules" value="m.module_code" (click)="selectSpecialization()">{{m.module_code}} {{m.module_name}}</option>
+            </select>
+            <textarea cols="80" rows="3" class="form-control" id="specializations" name="specializations" [readonly]="edit" formControlName="specializations"
+              [value]="specializations"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group" *ngIf="isAcademic()">
+          <div class="left-label">
+            <label for="non-spec">Non-academic Specializations</label>
+          </div>
+          <div class="right-input">
+            <select class="form-control" id="non_spec" name="non_spec" [disabled]="active" formControlName="non_spec" [value]="non-spec">
+              <option value="Event Organization">Event Organization</option>
+              <option value="Industry and Internship">Industry and internship</option>
+              <option value="Postgraduate Studies">Postgraduate Studies</option>
+              <option value="Researches">Researches</option>
+            </select>
+          </div>
+        </div>
+
+        <ul class="list-btn">
+          <li>
+            <button type="submit" class="btn btn-primary" [disabled]="active">Save </button>
+          </li>
+          <li> </li>
+          <li>
+            <button type="button" class="btn btn-info" (click)="close()">Close</button>
+          </li>
+        </ul>
+
+      </form>
+    </div>
+  </div>
+</div>
