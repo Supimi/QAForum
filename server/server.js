@@ -39,7 +39,7 @@ app.get('*', function (req, res) {
 
 const server = http.createServer(app);
 
-server.listen(config.port, function (err) {
+app.listen(config.port, function (err) {
   if (err) {
     console.log(err);
   }
