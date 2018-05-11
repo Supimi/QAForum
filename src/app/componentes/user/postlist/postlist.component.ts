@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { UserService } from '../../../services/user.service';
 import { QuestionService } from '../../../services/question.service';
 import { QuestionsupportService } from '../../../services/questionsupport.service';
@@ -63,7 +63,7 @@ export class PostlistComponent implements OnInit {
 
   directTo(route: string, q_id: string) {
     var oldobj = JSON.parse(localStorage.getItem('userObject'));
-    var newObject = { 'token': oldobj.token, 'email': oldobj.email, 'id': oldobj.id, 'q_id': q_id }
+    var newObject = { 'token': oldobj.token, 'email': oldobj.email, 'id': oldobj.id, 'usertype':oldobj.usertype,'username':oldobj.username, 'q_id': q_id }
 
     //if (typeof oldobj !== 'undefined') {
       localStorage.setItem('userObject', JSON.stringify(newObject));

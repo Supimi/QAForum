@@ -101,8 +101,9 @@ export class UserProfileComponent implements OnInit {
   getUser() {
     this._userService.getUser(this.email).subscribe(res => {
       this.user = this.userfactory.getuser(this.usertype, res);
-      this.firstname = this.user.getFirstName();
-      this.lastname = this.user.getLastName();
+      console.log(this.user);
+      this.firstname = res.firstname;
+      this.lastname = res.lastname;
       this.username = this.username;
       if (this.usertype == "Student") {
         this.index = res.index;

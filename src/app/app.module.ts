@@ -65,7 +65,7 @@ const appRoutes: Routes = [
   {
     path: 'user',
     component: UserComponent,
-    children: [{ path: 'recent', component: PostlistComponent }, { path: 'history', component: HistoryComponent },  { path: 'userprofile', component: UserProfileComponent }]
+    children: [{ path: 'recent', component: PostlistComponent }, { path: 'history', component: HistoryComponent }, { path: 'userprofile', component: UserProfileComponent }]
   },
   {
     path: 'question',
@@ -79,7 +79,7 @@ const appRoutes: Routes = [
     path: 'admin',
     component: HomepageComponent,
     children: [{ path: 'home', component: AdminHomeComponent }, { path: 'specialization', component: SpecializationComponent }, { path: 'notification', component: NotificationsComponent },
-    { path: 'users', component: UsersComponent }, { path: 'settings', component: SettingsComponent },{ path: 'search', component: AdminSearchComponent }]
+    { path: 'users', component: UsersComponent }, { path: 'settings', component: SettingsComponent }, { path: 'search', component: AdminSearchComponent }]
   }
 ];
 

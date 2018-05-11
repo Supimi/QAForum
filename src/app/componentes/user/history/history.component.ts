@@ -63,5 +63,15 @@ export class HistoryComponent implements OnInit {
 
   }
 
+  directTo(route: string, q_id: string) {
+    var oldobj = JSON.parse(localStorage.getItem('userObject'));
+    var newObject = { 'token': oldobj.token, 'email': oldobj.email, 'id': oldobj.id, 'usertype':oldobj.usertype,'username':oldobj.username, 'q_id': q_id }
+
+    //if (typeof oldobj !== 'undefined') {
+      localStorage.setItem('userObject', JSON.stringify(newObject));
+      this._questionsupportService.setQid(q_id);
+      this._router.navigateByUrl(`/${route}`);
+   // };
+  }
 
 }

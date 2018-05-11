@@ -7,15 +7,19 @@
   <!-- Modal Content -->
   <form class="modal-content animate" [formGroup]="addquestionForm" method="post" action="" (ngSubmit)="addQuestion(addquestionForm.value)" >
     <div class="container">
-     <span onclick="document.getElementById('addq1').style.display='none'" class="close" title="Close form" >&times;</span>
+     <span (click)="close()" class="close" title="Close form" >&times;</span>
      <div class='containter2'>
         <label for="question_content"><b>Question</b></label>
         <span class="alert" *ngIf="!addquestionForm.controls['question_content'].valid && addquestionForm.controls['question_content'].touched">{{ titleAlert }}</span>
         <textarea name="question_content" id="question_content" cols="30" rows="10"  placeholder="Type your Question" class='form-control' formControlName="question_content" required></textarea>
 
       <label for="tags"><b>Tags</b></label>
-      <input type="text"  class='form-control' placeholder="Tag the key areas" name="tags" formControlName="tags" id="tags" required>
-
+      <br>
+      <!--input type="text"  class='form-control' placeholder="Tag the key areas" name="tags" formControlName="tags" id="tags" required-->
+      <select placeholder="Tag the key areas" name="tags" formControlName="tags" id="tags" required>
+        <option *ngFor="let m of modules" value="m.module_code" (click)="selectSpecialization()">{{m.module_code}} {{m.module_name}}</option>
+      </select>
+      <br>
       <label for="type"><b>Type</b></label>
       <span class="alert" *ngIf="!addquestionForm.controls['type'].valid && addquestionForm.controls['type'].touched">{{ titleAlert }}</span>
       <br>

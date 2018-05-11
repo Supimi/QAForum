@@ -1,14 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Output, EventEmitter} from '@angular/core';
 import { UserService } from '../../../services/user.service';
 import { QuestionService } from '../../../services/question.service';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators, } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-addquestion',
   templateUrl: './addquestion.component.html',
   styleUrls: ['./addquestion.component.css']
 })
+
 export class AddquestionComponent implements OnInit {
+  @Output() ques_added: EventEmitter<any> = new EventEmitter<any>();
   addquestionForm: FormGroup;
   question_content: String;
   tagtext: String;
@@ -19,7 +22,10 @@ export class AddquestionComponent implements OnInit {
   message: String = '';
   user: any;
   tags: String[];
-  constructor(private _questionService: QuestionService, private _userService: UserService, private _formBuilder: FormBuilder) {
+  modules:any;
+ 
+
+  constructor(private _questionService: QuestionService, private _userService: UserService, private _formBuilder: FormBuilder,private _router: Router) {
     this.tagtext = '';
     this.type = '';
     this.username = '';
@@ -34,6 +40,8 @@ export class AddquestionComponent implements OnInit {
 
     // console.log retrieved item
     this.user = JSON.parse(userObject);
+
+    this.getModules(this.user.token);
 
   }
 
@@ -55,6 +63,8 @@ export class AddquestionComponent implements OnInit {
       if (res.success) {
         console.log("Question posted");
         this.message = 'Your question is posted successfully.'
+        this.close();
+        this.onadd(res.success);
       }
 
     },
@@ -69,6 +79,26 @@ export class AddquestionComponent implements OnInit {
     this.addquestionForm.reset();
 
   }
+
+  getModules(token) {
+    this._userService.getSpecializations(token).subscribe(res => {
+      this.modules = res;
+      console.log(res);
+    }, error => {
+      console.log("Error in fetching specializations");
+    });
+  }
+
+  close(){
+    document.getElementById('addq1').style.display='none';
+  }
+
+  onadd(success:boolean): void {
+    this.ques_added.emit({
+     added:true
+    });
+  }
+
 
 
 
