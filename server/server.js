@@ -24,7 +24,7 @@ mongoose.connect(config.database, function (err) {
   else {
     console.log('database connected');
   }
-})
+});
 
 // Angular DIST output folder
 app.use(express.static(path.join(__dirname, '../dist')));
@@ -39,7 +39,7 @@ app.get('*', function (req, res) {
 
 const server = http.createServer(app);
 
-app.listen(config.port, function (err) {
+app.listen(process.env.PORT || 3000, function (err) {
   if (err) {
     console.log(err);
   }
