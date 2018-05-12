@@ -9,6 +9,21 @@
   padding-bottom: 19px;
 }
 
+.text-block {
+  position: absolute;
+  background-color: transparent;
+  color: white;
+  text-align: center;
+  /*top: 10%;*/
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Open Sans";
+  font-weight: bold;
+  font-size: 2.5em;
+  text-shadow: darkred;
+}
+
 /* Custom page footer */
 .footer {
   padding-top: 19px;
@@ -70,13 +85,14 @@ a.active{
     color: white;
 
   }
- 
+
 }
 
 /* resize image */
 .img-header img {
   width: 100%;
   height: auto;
+  position: relative;
 }
 
 .centered {
@@ -105,4 +121,84 @@ a.active{
   font-family:  "Open Sans";
   font-style: oblique;
   font-weight: bold;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .text-block{
+    font-size: xx-small;
+  }
+  .forum{
+    display: none;
+  }
+  .dept-name{
+    display: none;
+  }
+  .uni{
+    display: none;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .text-block{
+    font-size: xx-small;
+  }
+  .forum{
+    display: none;
+  }
+  .dept-name{
+    display: block;
+  }
+  .uni{
+    display: none;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .text-block{
+    font-size: x-small;
+  }
+  .forum{
+    display: none;
+  }
+  .dept-name{
+    display: block;
+  }
+  .uni{
+    display: block;
+  }
+}
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .text-block{
+    display: block;
+  }
+  .forum{
+    display: block;
+  }
+  .dept-name{
+    display: block;
+  }
+  .uni{
+    display: block;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .text-block{
+    display: block;
+  }
+  .forum{
+    display: block;
+  }
+  .dept-name{
+    display: block;
+  }.uni{
+     display: block;
+     }
 }

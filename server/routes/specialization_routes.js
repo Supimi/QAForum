@@ -7,6 +7,7 @@ function addSpecilization(req, res) {
         module_name: req.body.module_name,
         semester: req.body.semester,
         stream: req.body.stream,
+        tag:req.body.tag
     });
     specialization.save(function (err) {
         if (err) {

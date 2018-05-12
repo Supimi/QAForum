@@ -16,6 +16,7 @@ export class SpecializationComponent implements OnInit {
   module_name: string;
   semester: number;
   stream: string;
+  tag: string;
   token: string;
   limit: number;
   message: string = "";
@@ -26,11 +27,14 @@ export class SpecializationComponent implements OnInit {
     this.module_code = '';
     this.module_name = '';
     this.stream = '';
+    this.tag = '';
+
     this.addspecializationForm = _formBuilder.group({
       'module_code': [null, Validators.required],
       'module_name': [null, Validators.required],
       'semester': [null, Validators.required],
-      'stream': [null, Validators.required]
+      'stream': [null, Validators.required],
+      "tag": [null, Validators.required]
     });
     // Retrieve the object from localStorage
     var userObject = localStorage.getItem('userObject');
@@ -58,7 +62,7 @@ export class SpecializationComponent implements OnInit {
 
   addSpecialization(post) {
     //console.log('Adding new specilization', post);
-    this.newSpecilization = new Specialization(post.module_code, post.module_name, post.semester, post.stream);
+    this.newSpecilization = new Specialization(post.module_code, post.module_name, post.semester, post.stream, post.tag);
     //console.log( this.newSpecilization);
     this._adminService.addSpecilization(this.token, this.newSpecilization).subscribe(res => {
       console.log(res);

@@ -26,3 +26,9 @@ h1, h2, h3 {
 section{
   min-height: 400px;
 }
+
+.err{
+	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+	font-weight: bolder;
+	color: red;
+}

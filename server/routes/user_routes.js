@@ -62,7 +62,7 @@ function checkuser(req, res) {
                     message: "User doesn't exist."
                 });
             } else if (user) {
-                console.log(user);
+                //console.log(user);
                 var validPassword = user.comparePassword(req.body.password);
 
                 if (!validPassword) {

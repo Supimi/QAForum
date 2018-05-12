@@ -41,6 +41,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { AdminSearchComponent } from './componentes/admin/admin-search/admin-search.component';
 import { BarRatingModule } from "ngx-bar-rating";
 import { UserProfileComponent } from './componentes/user/user-profile/user-profile.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 
 const appRoutes: Routes = [
@@ -118,7 +119,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
-    BrowserModule, HttpModule, FormsModule, ReactiveFormsModule, NgxPaginationModule, BarRatingModule
+    BrowserModule, HttpModule, FormsModule, ReactiveFormsModule, NgxPaginationModule, BarRatingModule,NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [SignupService, SigninService, QuestionService, UserService, QuestionsupportService, AdminService],
   bootstrap: [AppComponent]

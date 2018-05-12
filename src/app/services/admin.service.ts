@@ -40,7 +40,8 @@ export class AdminService {
       module_code: module.Module_code,
       module_name: module.Module_name,
       semester: module.Semester,
-      stream: module.Stream
+      stream: module.Stream,
+      tag:module.tag
     }).map(res => res.json());
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit ,Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { UserService } from '../../../services/user.service';
 import { QuestionService } from '../../../services/question.service';
 import { FormBuilder, FormGroup, FormControl, Validators, } from '@angular/forms';
@@ -22,10 +22,10 @@ export class AddquestionComponent implements OnInit {
   message: String = '';
   user: any;
   tags: String[];
-  modules:any;
- 
+  modules: any;
+  
 
-  constructor(private _questionService: QuestionService, private _userService: UserService, private _formBuilder: FormBuilder,private _router: Router) {
+  constructor(private _questionService: QuestionService, private _userService: UserService, private _formBuilder: FormBuilder, private _router: Router) {
     this.tagtext = '';
     this.type = '';
     this.username = '';
@@ -46,6 +46,7 @@ export class AddquestionComponent implements OnInit {
   }
 
   ngOnInit() {
+    
   }
 
   addQuestion(post) {
@@ -89,13 +90,13 @@ export class AddquestionComponent implements OnInit {
     });
   }
 
-  close(){
-    document.getElementById('addq1').style.display='none';
+  close() {
+    document.getElementById('addq1').style.display = 'none';
   }
 
-  onadd(success:boolean): void {
+  onadd(success: boolean): void {
     this.ques_added.emit({
-     added:true
+      added: true
     });
   }
 

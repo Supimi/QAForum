@@ -44,7 +44,7 @@ app.listen(process.env.PORT || 3000, function (err) {
     console.log(err);
   }
   else {
-    console.log('app is listing on port'.concat(config.port));
+   // console.log('app is listing on port'.concat(config.port));
   }
 }
 );

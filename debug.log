@@ -1,1 +1,2 @@
 [0322/233031.548:ERROR:crash_report_database_win.cc(568)] CreateDirectory C:\Users\user\AppData\Local\Temp\karma-39037344\Crashpad: The system cannot find the path specified. (0x3)
+[0512/072558.119:ERROR:file_io_win.cc(179)] CreateFile C:\Users\user\AppData\Local\Temp\karma-82100567\Crashpad\settings.dat: The process cannot access the file because it is being used by another process. (0x20)
