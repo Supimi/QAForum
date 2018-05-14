@@ -4,6 +4,7 @@ import { AddquestionComponent } from './../addquestion/addquestion.component';
 import { Router } from '@angular/router';
 import { Observable } from "rxjs/Observable";
 import "rxjs/Rx";
+import {QuestionsupportService} from '../../../services/questionsupport.service';
 
 @Component({
   selector: 'app-profile',
@@ -21,17 +22,17 @@ export class ProfileComponent implements OnInit {
   notifications: any;
   no_notifications: number;
 
-  constructor(private _userService: UserService, private _router: Router) {
+  constructor(private _userService: UserService, private _router: Router,private _questionsupportService:QuestionsupportService) {
 
     // Retrieve the object from localStorage
     var userObject = localStorage.getItem('userObject');
-    if(userObject==null){
+    if (userObject == null) {
       this._router.navigate(['/signin'])
     }
 
     // console.log retrieved item
     var user = JSON.parse(userObject);
-    
+
 
     this.authToken = user.token;
     this.email = user.email;
@@ -51,10 +52,10 @@ export class ProfileComponent implements OnInit {
         console.log("Something went wrong");
       }
     );
-    
-   // Observable.interval(20000).takeWhile(() => true).subscribe(() => this.getNotfications(this.email, this.authToken));
 
-    //this.getNotfications(this.email, this.authToken);
+    //Observable.interval(20000).takeWhile(() => true).subscribe(() => this.getNotfications(this.email, this.authToken));
+
+    this.getNotfications(this.email, this.authToken);
 
   }
 
@@ -82,13 +83,7 @@ export class ProfileComponent implements OnInit {
       this.notifications = [];
       console.log(err);
     });
-   /* if (this.no_notifications == 0) {
-      document.getElementById('badge').style.display = "none";
-    }
-    else {
-      document.getElementById('badge').style.display = "block";
-    }*/
-
+    
   }
 
   caltimePeriod(d) {
@@ -100,5 +95,17 @@ export class ProfileComponent implements OnInit {
       return n + ' days';
     }
 
+  }
+
+  
+
+  directTo(q_id: string) {
+    var oldobj = JSON.parse(localStorage.getItem('userObject'));
+    var newObject = { 'token': oldobj.token, 'email': oldobj.email, 'id': oldobj.id, 'usertype':oldobj.usertype,'username':oldobj.username, 'q_id': q_id }
+
+      localStorage.setItem('userObject', JSON.stringify(newObject));
+      this._questionsupportService.setQid(q_id);
+      console.log(q_id);
+     // this._router.navigateByUrl("/question");
   }
 }

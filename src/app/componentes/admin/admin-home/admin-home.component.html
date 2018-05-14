@@ -1,5 +1,5 @@
 <div class="admin-home">
-  <form [formGroup]="questionsForm" method="post" action="" (ngSubmit)="getQuestions(questionsForm.value)">
+  <!--form [formGroup]="questionsForm" method="post" action="" (ngSubmit)="getQuestions(questionsForm.value)">
     <div class="col-md-7 col-sm-7 col-xs-12 gutter">
       <div class="questions">
         <h2>Question Category</h2>
@@ -33,7 +33,7 @@
       </div>
     </div>
 
-  </form>
+  </form-->
 
   <table class="table table-hover">
     <thead>
@@ -45,7 +45,7 @@
       </tr>
     </thead>
     <tbody *ngFor="let q of questions">
-      <tr>
+      <tr (click)="directTo('admin/question',q._id)">
         <td>{{q.question_content}}</td>
         <td>{{q.type}}</td>
         <td>{{q.date_posted|date}}</td>

@@ -74,6 +74,8 @@ function updateTotalRatings(req, res) {
         });
 }
 
+
+
 //delete all answers relevent to a question
 function deleteQuestionAnswers(req, res) {
     Answer.remove({ refered_question: req.params.ref_question }, function (err, ans) {

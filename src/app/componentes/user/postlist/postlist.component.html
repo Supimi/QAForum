@@ -1,31 +1,24 @@
 <div class="outercontainer">
     <div *ngFor="let q of questions" class="container">
-        
-        <div class="[ panel panel-default ] panel-google-plus" (click)="directTo('question', q._id)">
+
+        <div class="[ panel panel-default ] panel-google-plus">
             <div class="dropdown">
                 <span class="dropdown-toggle" type="button" data-toggle="dropdown">
                     <span class="[ glyphicon glyphicon-chevron-down ]"></span>
                 </span>
                 <ul class="dropdown-menu" role="menu">
                     <li role="presentation">
-                        <a role="menuitem" tabindex="-1" href="#">Visit</a>
+                        <a role="menuitem" tabindex="-1"(click)="directTo('question', q._id)">Visit</a>
                     </li>
                     <li role="presentation">
                         <a role="menuitem" tabindex="-1" href="#">Hide</a>
-                    </li>
-                    <li role="presentation">
-                        <a role="menuitem" tabindex="-1" href="#">Something else here</a>
-                    </li>
-                    <li role="presentation" class="divider"></li>
-                    <li role="presentation">
-                        <a role="menuitem" tabindex="-1" href="#">Separated link</a>
                     </li>
                 </ul>
             </div>
             <div class="panel-google-plus-tags">
                 <ul>
-                    <li>#{{q.tag}}</li>
-                    <li>#tag2</li>
+                    <li>#{{q.tags[0]}}</li>
+                    <li>#{{q.tags[1]}}</li>
                 </ul>
             </div>
             <div class="panel-heading">
@@ -36,7 +29,7 @@
                     <span>{{q.date_posted| date}}</span>
                 </h5>
             </div>
-            <div class="panel-body">
+            <div class="panel-body" (click)="directTo('question', q._id)">
                 <p>{{q.question_content}}</p>
             </div>
             <div class="panel-footer">

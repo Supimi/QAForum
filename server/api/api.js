@@ -29,6 +29,9 @@ module.exports = function (app, express) {
   //retrive the details of one user
   api.get('/user/:email', user_routes.getUser);
 
+  //retrieve all specilizations from the database
+  api.get('/specialization', specialization_routes.getSpecilizations);
+
 
   //***************************MIDDLEWARE************************************* */
   api.use(function (req, res, next) {
@@ -160,9 +163,6 @@ module.exports = function (app, express) {
   //add new specilizations
   api.post('/specialization', specialization_routes.addSpecilization);
 
-  //retrieve all specilizations from the database
-  api.get('/specialization', specialization_routes.getSpecilizations);
-
   //get the details of a specific specialization
   api.get('/specialization/:module_code', specialization_routes.getSpecilization);
 
@@ -178,8 +178,13 @@ module.exports = function (app, express) {
   //add new non-academic specilizations to the system -only by admin
   api.post('/nonAcaSpec', non_aca_specilization_routes.addNonAcaSpec);
 
+  //get users with specific non academic specialization
+  api.put('/nonAcaSpec/users', non_aca_specilization_routes.getSpecializedUsers);
+
   //add users to the non-aca-specili zations
-  api.put('/nonAcaSpec/:id', non_aca_specilization_routes.updateNonAcaSpec);
+  api.put('/nonAcaSpec/:email', non_aca_specilization_routes.updateNonAcaSpec);
+
+ 
 
   return api;
 };

@@ -6,7 +6,7 @@ var UserNotificationSchema = new Schema({
     message: { type: String, required: true },
     refered_ques: { type: String },
     users: { type: [String] },
-    status:{ type:Boolean, required:true}
+    status:{ type:Boolean, required:true},
 
 });
 

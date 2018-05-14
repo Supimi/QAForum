@@ -252,6 +252,8 @@ function getUsername2(req, res) {
     });
 }
 
+
+
 module.exports = { adduser, checkuser, getUsers, getUser, updateUser, deleteUser, searchUsers, getUserCount, getUsername1, getUsername2 };
 
 

@@ -26,8 +26,8 @@ export class UserService {
 
   }
 
-  updateUser(id, email, token, firstname, lastname, specialization, position, working_place, non_spec) {
-    console.log(specialization);
+  updateUser(id, email, token, firstname, lastname, specialization, position, working_place, non_spec,index) {
+    console.log("from update user");
     return this._http.put('/api.qsolver.com/user/'.concat(email), {
       token: token,
       id: id,
@@ -36,7 +36,8 @@ export class UserService {
       specialization: specialization,
       position: position,
       working_place: working_place,
-      non_spec: non_spec
+      non_spec: non_spec,
+      index:index
     }).map(res => res.json());
   }
 

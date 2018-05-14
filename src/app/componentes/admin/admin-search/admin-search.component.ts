@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../../services/admin.service';
 import { QuestionService } from '../../../services/question.service';
+import { QuestionsupportService } from '../../../services/questionsupport.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-search',
@@ -14,7 +16,7 @@ export class AdminSearchComponent implements OnInit {
   searchresults: any;
   resultsLoaded: Promise<boolean>;
 
-  constructor(private _adminService: AdminService, private _questionService: QuestionService) {
+  constructor(private _adminService: AdminService, private _questionService: QuestionService,private _questionsupportService:QuestionsupportService,private _router:Router) {
     // Retrieve the object from localStorage
     var userObject = localStorage.getItem('userObject');
 
@@ -63,6 +65,15 @@ export class AdminSearchComponent implements OnInit {
     } else {
       return "bluecoloured";
     }
+  }
+
+  directTo(route: string, q_id: string) {
+    var oldobj = JSON.parse(localStorage.getItem('userObject'));
+    var newObject = { 'token': oldobj.token, 'email': oldobj.email, 'id': oldobj.id, 'usertype':oldobj.usertype,'username':oldobj.username, 'q_id': q_id }
+
+      localStorage.setItem('userObject', JSON.stringify(newObject));
+      this._questionsupportService.setQid(q_id);
+      this._router.navigateByUrl(`/${route}`);
   }
 
 }

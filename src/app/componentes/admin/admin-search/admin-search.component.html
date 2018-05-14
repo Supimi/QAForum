@@ -6,7 +6,7 @@
           <div *ngIf="collection=='Questions';then questions else users"></div>
           <ng-template #questions>
             <tbody class="questions">
-              <tr *ngFor="let q of searchresults">
+              <tr *ngFor="let q of searchresults" (click)="directTo('admin/question',q._id)">
                 <td class="col-1">
                   <div *ngIf="q.type=='Academic Subject'">
                     <img src="../../../../assets/img/que_aca.png" alt="" class="qtype_img">

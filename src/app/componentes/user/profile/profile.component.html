@@ -36,7 +36,7 @@
                         <div class="nav-notifications">
                             <div class="row">
                                 <div class="col-lg-12" *ngFor="let n of notifications">
-                                    <li>
+                                    <li (click)="directTo(n.q_id)">
                                         <p class="text-left">{{n.message}}
                                             <span>{{caltimePeriod(n.date)}}</span>
                                         </p>
@@ -68,7 +68,7 @@
                                         </p>
                                         <p class="text-left small">{{email}}</p>
                                         <p class="text-left">
-                                            <a href="#" class="btn btn-primary btn-block btn-sm">Profile</a>
+                                            <a href="user/userprofile" class="btn btn-primary btn-block btn-sm">Profile</a>
                                         </p>
                                     </div>
                                 </div>
@@ -76,7 +76,7 @@
                         </li>
                         <li class="divider navbar-user-session-bg"></li>
                         <li>
-                            <a href="user/userprofile">Edit Profile
+                            <a>Change Password
                                 <span class="glyphicon glyphicon-cog pull-right"></span>
                             </a>
                         </li>

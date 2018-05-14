@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SignupService } from '../../../services/signup.service';
 import { SigninService } from '../../../services/signin.service';
+import { UserService } from "../../../services/user.service";
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
 
@@ -21,9 +22,10 @@ export class SignupOtherComponent implements OnInit {
   other_spec: String;
   position: String;
   err: String;
-  msg: String="";
-
-  constructor(private _signupService: SignupService, private _signinService: SigninService, private _formBuilder: FormBuilder) {
+  msg: String = "";
+  modules: any;
+  token: string = "";
+  constructor(private _signupService: SignupService, private _signinService: SigninService, private _formBuilder: FormBuilder, private _userService: UserService) {
     this.firstname = '';
     this.lastname = '';
     this.username = '';
@@ -41,13 +43,15 @@ export class SignupOtherComponent implements OnInit {
       'other_spec': [null, Validators.required]
     });
 
+    this.getModules(this.token);
+
   }
 
   ngOnInit() {
   }
   signupRequest(post) {
     if (this.validateEmail(post.email)) {
-      this.err='';
+      this.err = '';
       this._signupService.signupRequest(post.firstname, post.lastname, post.username, this.usertype, post.email, post.specialization, null, post.position, "CSE").subscribe(
         res => {
           this.signupForm.reset();
@@ -60,7 +64,7 @@ export class SignupOtherComponent implements OnInit {
       );
 
     }
-    
+
 
   }
 
@@ -75,7 +79,15 @@ export class SignupOtherComponent implements OnInit {
       return false;
     }
   }
-  
-  
+
+  getModules(token) {
+    this._userService.getSpecializations(token).subscribe(res => {
+      this.modules = res;
+    }, error => {
+      console.log("Error in fetching specializations");
+    });
+  }
+
+
 
 }

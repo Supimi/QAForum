@@ -69,12 +69,7 @@
             </label>
             <div class="col-md-8 col-sm-9">
               <select name="type" class="form-control" placeholder="Select specialization" id="specialization" formControlName="specialization">
-                <option value="OOP">OOP </option>
-                <option value="OOSD">OOSD</option>
-                <option value="SE">Software Engineering</option>
-                <option value="DBSM">Database and Design</option>
-                <option value="TOC">Theory of Computing</option>
-                <option value="IS" selected>Interlligent Systems</option>
+                <option *ngFor="let m of modules" value="m.module_code">{{m.module_code}} {{m.module_name}}</option>
               </select>
             </div>
           </div>

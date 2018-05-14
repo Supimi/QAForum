@@ -23,20 +23,41 @@ function addNonAcaSpec(req, res) {
 //update the non academic specilizations with users
 function updateNonAcaSpec(req, res) {
     Non_aca_Specilization.update(
-      { name_spec: req.body.spec },
-      {
-        $addToSet: {
-          users: req.params.id
-        }
-      }, function (err, user) {
-        if (err) {
-          console.log("Error when adding new user to the non academic specilization");
-          res.send(err);
-        }
-        else {
-          res.send(user);
-        }
-      });
-  }
+        { name_spec: req.body.spec },
+        {
+            $addToSet: {
+                users: req.params.email
+            }
+        }, function (err, user) {
+            if (err) {
+                console.log("Error when adding new user to the non academic specilization");
+                res.send(err);
+            }
+            else {
+                res.json(user);
+            }
+        });
+}
 
-module.exports = { addNonAcaSpec, updateNonAcaSpec }
+//get users with non_academic specialization
+
+function getSpecializedUsers(req,res){
+    Non_aca_Specilization.findOne({
+        name_spec:req.body.non_spec
+    }).select('users').exec(function (err, useremails) {
+        if (err) {
+            console.log('cannot get useremails');
+            throw err;
+        }
+        if (!useremails) {
+            res.send({
+                success: false,
+                message: "Users doesn't exist."
+            });
+        } else if (useremails) {
+            res.json(useremails);
+        }
+    });
+}
+
+module.exports = { addNonAcaSpec, updateNonAcaSpec,getSpecializedUsers }

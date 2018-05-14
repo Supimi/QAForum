@@ -1,10 +1,13 @@
 <div class="body">
-  <app-profile></app-profile>
+  <div class="topbar" *ngIf="usertype!='Admin'">
+    <app-profile></app-profile>
+  </div>
+
   <div class="container">
     <div class="jumbotron">
       <p class="lead">{{q_content}}</p>
       <hr class="my-4">
-      <p>{{tags}} | {{type}}  |  {{date_posted| date}}</p>
+      <p>{{tags}} | {{type}} | {{date_posted| date}}</p>
     </div>
     <h2>Answers</h2>
     <app-answerlist></app-answerlist>

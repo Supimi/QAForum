@@ -37,7 +37,7 @@ export class UserProfileComponent implements OnInit {
 
     // console.log retrieved item
     var userobj = JSON.parse(userObject);
-    console.log("userOBJ___", userobj, userobj.usertype);
+    
     this.usertype = userobj.usertype;
     this.email = userobj.email;
     this.username = userobj.username;
@@ -92,9 +92,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   activeEdit() {
-    console.log(this.edit);
     this.edit = false;
-    console.log(this.edit);
     this.active = false;
   }
 
@@ -141,8 +139,40 @@ export class UserProfileComponent implements OnInit {
 
   editDetails(post) {
     console.log(post, post.firstname);
-    this._userService.updateUser(this.id, this.email, this.token, post.firstname, post.lastname, post.specializations, post.position, post.working_place, post.non_spec).subscribe(res => {
-      console.log("Use updated");
+    if (typeof post.firstname != "undefined") {
+      this.firstname = post.firstname;
+    }
+
+    if (typeof post.lastname != "undefined") {
+      this.lastname = post.lastname;
+    }
+
+    if (typeof post.username != "undefined") {
+      this.username = post.username;
+    }
+
+    if (typeof post.specialization != "undefined") {
+      this.specializations = post.specialization;
+    }
+
+    if (typeof post.position != "undefined") {
+      this.position = post.position;
+    }
+
+    if (typeof post.working_place != "undefined") {
+      this.working_place = post.working_place;
+    }
+
+    if (typeof post.non_spec != "undefined") {
+      this.non_spec = post.non_spec;
+    }
+
+    if (typeof post.index != "undefined") {
+      this.index = post.index;
+    }
+
+    this._userService.updateUser(this.id, this.email, this.token, this.firstname, this.lastname, this.specializations, this.position, this.working_place, this.non_spec,this.index).subscribe(res => {
+      console.log("User updated");
     }, error => {
       console.log("updating process failed.");
     });
@@ -158,12 +188,13 @@ export class UserProfileComponent implements OnInit {
   }
 
   close() {
-    this._router.navigate(['/user/recent']);
-  }
+    if (this.usertype == "Admin") {
+      this._router.navigate(['/admin/home']);
+    }
+    else {
+      this._router.navigate(['/user/recent']);
+    }
 
-  selectSpecialization() {
-    var val = document.getElementById("module").innerHTML;
-    console.log("value0000000000000",val);
   }
 
 

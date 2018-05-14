@@ -18,6 +18,7 @@ export class QuestionComponent implements OnInit {
   user: string;
   anonymous: boolean;
   rate: number = 3;
+  usertype: string;
 
   constructor(private _questionsupportService: QuestionsupportService) {
     // Retrieve the object from localStorage
@@ -25,9 +26,10 @@ export class QuestionComponent implements OnInit {
 
     // console.log retrieved item
     var user = JSON.parse(userObject);
-    console.log(user,"--------->userdetails");
+    console.log(user, "--------->userdetails");
     this.authToken = user.token;
     this.user = user.email;
+    this.usertype = user.usertype;
     this.q_id = this._questionsupportService.getQid() || user.q_id;
     this.getDetails(this.authToken, this.q_id);
   }
@@ -57,7 +59,7 @@ export class QuestionComponent implements OnInit {
     );
   }
 
-  Rate(){
+  Rate() {
     console.log("Rating")
   }
 

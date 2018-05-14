@@ -41,7 +41,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { AdminSearchComponent } from './componentes/admin/admin-search/admin-search.component';
 import { BarRatingModule } from "ngx-bar-rating";
 import { UserProfileComponent } from './componentes/user/user-profile/user-profile.component';
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { MultiselectDropdownModule } from 'angular-4-dropdown-multiselect';
+import { PasswordChangeComponent } from './componentes/user/password-change/password-change.component';
 
 
 const appRoutes: Routes = [
@@ -80,7 +81,8 @@ const appRoutes: Routes = [
     path: 'admin',
     component: HomepageComponent,
     children: [{ path: 'home', component: AdminHomeComponent }, { path: 'specialization', component: SpecializationComponent }, { path: 'notification', component: NotificationsComponent },
-    { path: 'users', component: UsersComponent }, { path: 'settings', component: SettingsComponent }, { path: 'search', component: AdminSearchComponent }]
+    { path: 'users', component: UsersComponent }, { path: 'settings', component: SettingsComponent }, { path: 'search', component: AdminSearchComponent },
+    { path: 'question', component: QuestionComponent }, { path: 'userprofile', component: UserProfileComponent }]
   }
 ];
 
@@ -115,11 +117,12 @@ const appRoutes: Routes = [
     SettingsComponent,
     AdminHomeComponent,
     AdminSearchComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    PasswordChangeComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
-    BrowserModule, HttpModule, FormsModule, ReactiveFormsModule, NgxPaginationModule, BarRatingModule,NgMultiSelectDropDownModule.forRoot()
+    BrowserModule, HttpModule, FormsModule, ReactiveFormsModule, NgxPaginationModule, BarRatingModule, MultiselectDropdownModule
   ],
   providers: [SignupService, SigninService, QuestionService, UserService, QuestionsupportService, AdminService],
   bootstrap: [AppComponent]

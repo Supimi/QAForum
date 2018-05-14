@@ -6,12 +6,18 @@ var User = require('../models/user');
 var server = require('../../server/server');
 var request = require('request');
 
+//import models
+var User = require('../models/user');
+var Question = require('../models/question');
+var Admin_notification = require('../models/admin_notification');
+
 //Require the dev-dependencies
 var chai = require('chai');
 var chaiHttp = require('chai-http');
 var should = chai.should();
 var assert = require('chai').assert
 var expect = require('chai').expect;
+
 
 var email = "supimi.15@cse.mrt.ac.lk";
 var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlN1cGltaSIsInVzZXJ0eXBlIjoiU3R1ZGVudCIsImlhdCI6MTUyNjE0MjI2M30.Xbe94AqQHG8JEX69iv46_lZw6pd4nkfGwPp4FL8pAdg";
@@ -37,7 +43,7 @@ var admin_request = {
     "username": "Dinuka",
     'email': "Dinuka@cse.mrt.ac.lk",
     'usertype': "Student",
-    "position":"",
+    "position": "",
     "status": false,
     "viewstatus": false
 };
@@ -52,6 +58,245 @@ var question = {
     "user_posted": "supimi",
     "anonymous": true
 };
+
+//VALIDATE MODELS
+
+
+describe('MODEL VALIDATIONS', function () {
+    describe('User Model Validations', function () {
+        it('should validate if email is empty', function (done) {
+            var user = new User();
+
+            user.validate(function (err) {
+                expect(err.errors.email).to.exist;
+                done();
+            })
+        });
+
+        it('should validate if username is empty', function (done) {
+            var user = new User();
+
+            user.validate(function (err) {
+                expect(err.errors.username).to.exist;
+                done();
+            })
+        });
+
+        it('should validate if firstname is empty', function (done) {
+            var user = new User();
+
+            user.validate(function (err) {
+                expect(err.errors.firstname).to.exist;
+                done();
+            });
+        });
+
+        it('should validate if lastname is empty', function (done) {
+            var user = new User();
+
+            user.validate(function (err) {
+                expect(err.errors.lastname).to.exist;
+                done();
+            });
+        });
+
+        it('should validate if usertype is empty', function (done) {
+            var user = new User();
+
+            user.validate(function (err) {
+                expect(err.errors.usertype).to.exist;
+                done();
+            });
+        });
+
+        it('should validate if password is empty', function (done) {
+            var user = new User();
+
+            user.validate(function (err) {
+                expect(err.errors.password).to.exist;
+                done();
+            });
+        });
+
+        it('should validate if index is empty', function (done) {
+            var user = new User();
+
+            user.validate(function (err) {
+                expect(err.errors.index).not.to.exist;
+                done();
+            });
+        });
+
+        it('should validate if specialization is empty', function (done) {
+            var user = new User();
+
+            user.validate(function (err) {
+                expect(err.errors.specialization).not.to.exist;
+                done();
+            });
+        });
+
+        it('should validate if non_aca_specialization is empty', function (done) {
+            var user = new User();
+
+            user.validate(function (err) {
+                expect(err.errors.non_aca_specialization).not.to.exist;
+                done();
+            });
+        });
+
+        it('should validate if position is empty', function (done) {
+            var user = new User();
+
+            user.validate(function (err) {
+                expect(err.errors.position).not.to.exist;
+                done();
+            });
+        });
+
+        it('should validate if working_place is empty', function (done) {
+            var user = new User();
+
+            user.validate(function (err) {
+                expect(err.errors.working_place).not.to.exist;
+                done();
+            });
+        });
+
+
+    });
+
+    describe("Question Model Validation", function () {
+        it('should validate if question_content is empty', function (done) {
+            var question = new Question();
+
+            question.validate(function (err) {
+                expect(err.errors.question_content).to.exist;
+                done();
+            });
+        });
+
+        /* it('should validate if tags is empty', function (done) {
+             var question = new Question();
+ 
+             question.validate(function (err) {
+                 expect(err.errors.tags).to.exist;
+                 done();
+             });
+         });*/
+
+        it('should validate if type is empty', function (done) {
+            var question = new Question();
+
+            question.validate(function (err) {
+                expect(err.errors.type).not.to.exist;
+                done();
+            });
+        });
+
+        it('should validate if user_posted is empty', function (done) {
+            var question = new Question();
+
+            question.validate(function (err) {
+                expect(err.errors.user_posted).to.exist;
+                done();
+            });
+        });
+
+        it('should validate if anonymous is empty', function (done) {
+            var question = new Question();
+
+            question.validate(function (err) {
+                expect(err.errors.anonymous).to.exist;
+                done();
+            });
+        });
+
+        it('should validate if date_posted is empty', function (done) {
+            var question = new Question();
+
+            question.validate(function (err) {
+                expect(err.errors.date_posted).not.to.exist;
+                done();
+            });
+        });
+    });
+
+    describe("Admin notification Model Validation", function () {
+        it('should validate if firstname is empty', function (done) {
+            var adminNotification = new Admin_notification();
+            adminNotification.validate(function (err) {
+                expect(err.errors.firstname).to.exist;
+                done();
+            });
+        });
+
+        it('should validate if lastname is empty', function (done) {
+            var adminNotification = new Admin_notification();
+
+            adminNotification.validate(function (err) {
+                expect(err.errors.lastname).to.exist;
+                done();
+            });
+        });
+
+        it('should validate if username is empty', function (done) {
+            var adminNotification = new Admin_notification();
+
+            adminNotification.validate(function (err) {
+                expect(err.errors.username).to.exist;
+                done();
+            });
+        });
+
+        it('should validate if usertype is empty', function (done) {
+            var adminNotification = new Admin_notification();
+
+            adminNotification.validate(function (err) {
+                expect(err.errors.usertype).to.exist;
+                done();
+            });
+        });
+
+        it('should validate if position is empty', function (done) {
+            var adminNotification = new Admin_notification();
+
+            adminNotification.validate(function (err) {
+                expect(err.errors.position).not.to.exist;
+                done();
+            });
+        });
+
+        it('should validate if status(boolean) is empty', function (done) {
+            var adminNotification = new Admin_notification();
+
+            adminNotification.validate(function (err) {
+                expect(err.errors.status).to.exist;
+                done();
+            });
+        });
+
+        it('should validate if view-status(boolean) is empty', function (done) {
+            var adminNotification = new Admin_notification();
+
+            adminNotification.validate(function (err) {
+                expect(err.errors.viewstatus).to.exist;
+                done();
+            });
+        });
+
+        it('should validate if date is empty', function (done) {
+            var adminNotification = new Admin_notification();
+
+            adminNotification.validate(function (err) {
+                expect(err.errors.date).not.to.exist;
+                done();
+            });
+        });
+
+    });
+});
+
 
 
 chai.use(chaiHttp);
@@ -163,7 +408,7 @@ describe('/User', function () {
                     "firstname": "Supimi",
                     "lastname": "Piyumika",
                     "username": "Supimi",
-                    "specialization":["ppp","qqq"],
+                    "specialization": ["ppp", "qqq"],
                     "position": "",
                     "working_place": ""
                 });
@@ -182,7 +427,7 @@ describe('Admin Notifications', function () {
                 .post('/api.qsolver.com/adminNotification')
                 .send(admin_request)
                 .end(function (err, res) {
-                    res.should.have.status(403);
+                    res.should.have.status(200);
                     expect(err).to.be.null;
                     expect(res).to.be.json;
                     done();
@@ -217,3 +462,4 @@ describe('Questions', function () {
         });
     });
 });
+

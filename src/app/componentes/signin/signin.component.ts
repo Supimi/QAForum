@@ -50,7 +50,7 @@ export class SigninComponent implements OnInit {
 
         }
         else {
-          this.message = 'Invalied Username or password';
+          this.message = 'Invalid Username or password';
         }
         console.log(this.message);
       },

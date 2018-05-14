@@ -3,6 +3,8 @@ import { UserService } from '../../../services/user.service';
 import { QuestionService } from '../../../services/question.service';
 import { FormBuilder, FormGroup, FormControl, Validators, } from '@angular/forms';
 import { Router } from '@angular/router';
+import { IMultiSelectOption, IMultiSelectTexts, IMultiSelectSettings } from 'angular-4-dropdown-multiselect';
+
 
 @Component({
   selector: 'app-addquestion',
@@ -14,27 +16,55 @@ export class AddquestionComponent implements OnInit {
   @Output() ques_added: EventEmitter<any> = new EventEmitter<any>();
   addquestionForm: FormGroup;
   question_content: String;
-  tagtext: String;
   type: String;
   checkuser: boolean;
   username: String;
   titleAlert: String = '*This field is required.';
   message: String = '';
   user: any;
-  tags: String[];
   modules: any;
-  
+  optionsModel: number[];
+  selectedOptions: number[] = [];
+
+  // Settings configuration
+  mySettings: IMultiSelectSettings = {
+    enableSearch: true,
+    checkedStyle: 'fontawesome',
+    buttonClasses: 'btn btn-default btn-block',
+    dynamicTitleMaxItems: 3,
+    displayAllSelectedText: true,
+    selectionLimit: 3,
+    autoUnselect: true,
+  };
+
+  // Text configuration
+  myTexts: IMultiSelectTexts = {
+    checkAll: 'Select all',
+    uncheckAll: 'Unselect all',
+    checked: 'tag selected',
+    checkedPlural: 'tags selected',
+    searchPlaceholder: 'Find',
+    searchEmptyResult: 'Nothing found...',
+    searchNoRenderText: 'Type in search box to see results...',
+    defaultTitle: 'Select',
+    allSelected: 'All selected',
+
+
+  };
+
+  // Labels / Parents
+  myOptions: IMultiSelectOption[]=[];
+  mytags: IMultiSelectOption[];
+
+
+
+
 
   constructor(private _questionService: QuestionService, private _userService: UserService, private _formBuilder: FormBuilder, private _router: Router) {
-    this.tagtext = '';
     this.type = '';
     this.username = '';
-    this.addquestionForm = _formBuilder.group({
-      'question_content': [null, Validators.required],
-      'tags': [null, Validators.required],
-      'type': [null, Validators.required],
-      'checkuser': [false, Validators.required]
-    });
+    this.optionsModel = [];
+
     // Retrieve the object from localStorage
     var userObject = localStorage.getItem('userObject');
 
@@ -46,13 +76,38 @@ export class AddquestionComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+
+    this.addquestionForm = this._formBuilder.group({
+      'question_content': [null, Validators.required],
+      'type': [null, Validators.required],
+      'optionsModel': [this.optionsModel, Validators.required],
+      'checkuser': [false, Validators.required]
+    });
+    this.addtags() ;
+
   }
 
+  constructList() {
+
+    for (var i = 0; i < this.modules.length; i++) {
+      this.myOptions.push({ id: this.modules[i].tag, name: this.modules[i].module_name, parentId: this.modules[i].module_code }, );
+    }
+    this.mytags = this.myOptions;
+
+  }
+
+  addtags() {
+    this.addquestionForm.get('optionsModel').valueChanges
+      .subscribe((selectedOptions) => {
+        this.selectedOptions.push(selectedOptions);
+      });
+
+  }
+
+
   addQuestion(post) {
+    console.log(this.optionsModel);
     this.question_content = post.question_content;
-    this.tagtext = post.tags;
-    this.tags = this.tagtext.split(" ");
     this.type = post.type;
     this.checkuser = post.checkuser;
     this.username = this._userService.getUsername();
@@ -60,7 +115,7 @@ export class AddquestionComponent implements OnInit {
 
     console.log('anonymous users', post.checkuser, this._userService.getUsername(), this._userService.getEmail());
 
-    this._questionService.addQuestion(this.question_content, this.tags, this.type, this.username, this.checkuser, this.user.token).subscribe(res => {
+    this._questionService.addQuestion(this.question_content, this.selectedOptions, this.type, this.username, this.checkuser, this.user.token).subscribe(res => {
       if (res.success) {
         console.log("Question posted");
         this.message = 'Your question is posted successfully.'
@@ -84,7 +139,9 @@ export class AddquestionComponent implements OnInit {
   getModules(token) {
     this._userService.getSpecializations(token).subscribe(res => {
       this.modules = res;
-      console.log(res);
+      console.log(this.modules);
+      this.constructList();
+      console.log(this.myOptions);
     }, error => {
       console.log("Error in fetching specializations");
     });

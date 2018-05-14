@@ -24,7 +24,7 @@ export class SignupService {
     }).map(res => res.json());
   }
 
-  signupRequest(firstname, lastname, username , usertype, email, specilization, index, position,  working_place) {
+  signupRequest(firstname, lastname, username , usertype, email, specialization, index, position,  working_place) {
     console.log('from sign up');
     return this._http.post('/api.qsolver.com/adminNotification', {
       'firstname': firstname , 
@@ -32,7 +32,7 @@ export class SignupService {
       'username': username, 
       'usertype' : usertype , 
       'email' : email ,
-      'specilization': specilization,
+      'specilization': specialization,
       'index' : index,
       'position' : position,
       'working_place' :  working_place
